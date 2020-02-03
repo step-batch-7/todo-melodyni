@@ -1,0 +1,85 @@
+h1 {
+  margin-block-start: 10px;
+  padding-left: 40px;
+  color: #3b4446;
+}
+
+hr {
+  color: #aeb6b8;
+}
+
+img {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #aeb6b8;
+  border-radius: 50px;
+  margin: 20px;
+  margin-top: 5px;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  padding-right: 20px;
+}
+
+.todo {
+  display: flex;
+  justify-content: end;
+}
+
+.left {
+  height: 900px;
+  width: 400px;
+}
+
+.middle {
+  margin-top: 40px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  height: 900px;
+  width: 400px;
+}
+
+.log {
+  height: 120px;
+  width: 600px;
+  background-color: #3b4446;
+  border-radius: 7px;
+  border-left: 8px solid #aeb6b8;
+  margin-bottom: 15px;
+}
+
+.todoItem {
+  padding-top: 10px;
+  background-color: #3b4446;
+  height: 800px;
+  width: 900px;
+  margin-left: 270px;
+  margin-top: 20px;
+  border-radius: 7px;
+}
+
+input {
+  background: none;
+  border: none;
+  border-bottom: 2px solid #aeb6b8;
+  font-size: 27px;
+  font-weight: 300;
+  color: #aeb6b8;
+  outline: none;
+}
+
+/*
+  #2dbe60 green
+  #eff2f3 white
+  #3b4446 dark grey
+  #7b868a light grey
+  #aeb6b8 very light grey
+
+*/

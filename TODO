@@ -1,0 +1,15 @@
+
+--done-- start
+  ✔  * make file to-do
+  ✔  * make directories lib,public,test,database
+  ✔  * init npm 
+  ✔  * add node_modules and .nyc_output to .gitignore
+
+--done-- add server
+  ✔  * write server
+  ✔  * write tests 
+
+create homePage
+* home page of todo app --> index.html
+
+
