@@ -1,4 +1,3 @@
-
 --done-- start
   ✔  * make file to-do
   ✔  * make directories lib,public,test,database
@@ -9,7 +8,7 @@
   ✔  * write server
   ✔  * write tests 
 
-create homePage
+--done-- create homePage
 * home page of todo app --> index.html
 
 
