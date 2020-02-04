@@ -24,6 +24,15 @@ describe('GET', () => {
       .set('Accept', '*/*')
       .expect(404, done);
   });
+
+  it('should give all todo data from database for request /oldTodos', done => {
+    request(app.respond.bind(app))
+      .get('/oldTodos')
+      .set('Accept', '*/*')
+      .expect(200, done)
+      .expect('Content-Type', 'text/plain')
+      .expect(/title/);
+  });
 });
 
 describe('METHOD not allowed', () => {

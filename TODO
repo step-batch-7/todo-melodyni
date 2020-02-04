@@ -9,6 +9,11 @@
   ✔  * write tests 
 
 --done-- create homePage
-* home page of todo app --> index.html
+  ✔  * home page of todo app --> index.html
+
+--done-- add serveOldTodo handler in server
+  ✔  * write test for a get Handler that serves old todo data to client
+  ✔  * on body load, fetch old todos to display on browser using xhr
+  ✔  * fill todo template according to the todo data  
 
 
