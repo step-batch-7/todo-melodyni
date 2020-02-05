@@ -74,7 +74,6 @@ img {
 }
 
 .todoItem {
-  display: none;
   padding-top: 10px;
   background-color: #3b4446;
   height: 800px;
@@ -123,6 +122,10 @@ textarea {
   width: 30px;
   border: 1px solid #aeb6b8;
   border-radius: 5px;
+}
+
+.hidden {
+  display: none;
 }
 
 /*
