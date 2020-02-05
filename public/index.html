@@ -3,23 +3,38 @@
   <head>
     <title>TODO</title>
     <link rel="stylesheet" href="./styles/todo.css" />
-    <script src="./js/todoAPP.js"></script>
+    <script src="./js/todoApp.js"></script>
+    <script src="./js/getResources.js"></script>
   </head>
-  <body onload="main()">
-    <div class="navBar">
-      <h1>TO DO</h1>
-      <div class="icon">
-        <img src="/images/add.png" alt="add" />
-        <img src="/images/bin.png" alt="bin" />
+  <body onload="todoMain()">
+   <div id="firstPage"> <div class="navBar">
+    <h1>TO DO</h1>
+    <div class="icon">
+      <img src="/images/add.png" alt="add" />
+      <img src="/images/bin.png" alt="bin" />
+    </div>
+  </div>
+  <hr />
+  <div class="todo">
+    <div class="left"></div>
+    <div class="list" id="todo" onclick="getTasksById(event)"  >
+      __todos__
+    </div>
+    <div class="right"></div>
+  </div></div>
+    <div id="secondPage"class="todoItem">
+      <div class="navBar">
+        <img src="images/save.png" alt="save" />
+        <input type="text" placeholder="Enter Todo Name...." />
+      </div>
+      <hr />
+      <br />
+      <div id="items">
+        __TODO_ITEMS__
+        </div>
       </div>
     </div>
-    <hr />
-    <div class="todo">
-      <div class="left"></div>
-      <div class="list">
-        __todos__
-      </div>
-      <div class="right"></div>
-    </div>
+
   </body>
+    
 </html>

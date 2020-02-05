@@ -17,6 +17,9 @@ h6 {
   font-weight: 70;
   color: #aeb6b8;
 }
+a {
+  text-decoration: none;
+}
 
 hr {
   color: #aeb6b8;
@@ -36,7 +39,7 @@ img {
   display: flex;
   justify-content: space-between;
   height: 50px;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
 .todo {
@@ -71,6 +74,7 @@ img {
 }
 
 .todoItem {
+  display: none;
   padding-top: 10px;
   background-color: #3b4446;
   height: 800px;
@@ -99,9 +103,19 @@ textarea {
   color: #aeb6b8;
   outline: none;
 }
-.tasks {
+.taskBox {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.task {
+  height: 40px;
+  width: 600px;
+  font-size: x-large;
+  font-family: sans-serif;
+  font-weight: 200;
+  color: #aeb6b8;
+  padding-left: 25px;
 }
 
 .checkBox {
@@ -109,7 +123,6 @@ textarea {
   width: 30px;
   border: 1px solid #aeb6b8;
   border-radius: 5px;
-  margin-top: 35px;
 }
 
 /*

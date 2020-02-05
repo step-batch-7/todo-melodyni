@@ -33,6 +33,15 @@ describe('GET', () => {
       .expect('Content-Type', 'text/plain')
       .expect(/title/);
   });
+
+  it('should give all tasks for the given id in GET url', done => {
+    request(app.respond.bind(app))
+      .get('/fetchTasks?id=todo_1')
+      .set('Accept', '*/*')
+      .expect(200, done)
+      .expect('Content-Type', 'text/plain')
+      .expect(/taskId/);
+  });
 });
 
 describe('METHOD not allowed', () => {

@@ -7,11 +7,6 @@
         "taskId": "todo_1_task_1",
         "taskName": "learning server",
         "status": true
-      },
-      {
-        "taskId": "todo_1_task_2",
-        "taskName": "learning XHR",
-        "status": false
       }
     ],
     "status": false

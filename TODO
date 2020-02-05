@@ -20,9 +20,11 @@
 6. Delete a todo list
 -------------------------
 
---done-- add serveOldTodo handler in server
+--done-- add serveTodo handler in server
   ✔  * write test for a get Handler that serves old todo data to client
   ✔  * on body load, fetch old todos to display on browser using xhr
   ✔  * fill todo template according to the todo data
 
---done-- add serveOldTodo handler in server 
+--done-- add serveTask handler in server 
+  ✔  * write test for a get Handler that serves old todo data to client
+  ✔  * fill taskTemplate template with tasks of given id
