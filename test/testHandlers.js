@@ -44,6 +44,15 @@ describe('GET', () => {
   });
 });
 
+describe('POST', () => {
+  it('should handle post request ', done => {
+    request(app.respond.bind(app))
+      .post('/postNewTodos')
+      .send('{title:newTodo,task:[]}')
+      .expect(200, done);
+  });
+});
+
 describe('METHOD not allowed', () => {
   it('should return 405 if the requested method is not allowed', done => {
     request(app.respond.bind(app))

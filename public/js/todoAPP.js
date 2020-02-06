@@ -5,8 +5,10 @@ const insertHTML = (selector, html) =>
 
 const hide = selector =>
   document.querySelector(selector).classList.add('hidden');
+
 const show = selector =>
   document.querySelector(selector).classList.remove('hidden');
+
 const fillTemplate = function(template, propertyBag) {
   const keys = Object.keys(propertyBag);
   const replaceKeyByValue = function(template, key) {
@@ -38,7 +40,7 @@ const todoTemplate = `
 
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
-  <div class="checkBox">__status__</div>
+  <input type="checkbox" class="checkBox __status__">
   <div class="task">__taskName__</div>
 </div><br>`;
 

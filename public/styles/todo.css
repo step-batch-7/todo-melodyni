@@ -90,6 +90,7 @@ input {
   font-size: 27px;
   font-weight: 300;
   color: #aeb6b8;
+  text-align: center;
   outline: none;
 }
 
@@ -118,10 +119,17 @@ textarea {
 }
 
 .checkBox {
+  zoom: 1.1;
   height: 30px;
   width: 30px;
   border: 1px solid #aeb6b8;
   border-radius: 5px;
+  margin: 0px;
+  margin-right: 20px;
+}
+
+.taskInput {
+  width: 550px;
 }
 
 .hidden {
