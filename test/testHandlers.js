@@ -1,5 +1,7 @@
+const { truncateSync } = require('fs');
 const request = require('supertest');
 const { app } = require('../lib/handler');
+const config = require('../config');
 
 describe('GET', () => {
   it('should get the homepage(index.html) for path /', done => {
@@ -52,6 +54,9 @@ describe('POST', () => {
       .post('/postNewTodos')
       .send(newTodo)
       .expect(200, done);
+  });
+  after(() => {
+    truncateSync(config.DATABASE);
   });
 });
 

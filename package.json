@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc mocha",
-    "start": "nodemon server.js"
+    "test": "export DATABASE=$(pwd)/test/resources/todos.json; nyc mocha",
+    "start": "export DATABASE=$(pwd)/dataBase/todos.json; nodemon server.js"
   },
   "repository": {
     "type": "git",
