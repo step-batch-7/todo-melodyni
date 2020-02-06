@@ -30,8 +30,7 @@ describe('GET', () => {
       .get('/oldTodos')
       .set('Accept', '*/*')
       .expect(200, done)
-      .expect('Content-Type', 'text/plain')
-      .expect(/title/);
+      .expect('Content-Type', 'text/plain');
   });
 
   it('should give all tasks for the given id in GET url', done => {
@@ -39,16 +38,19 @@ describe('GET', () => {
       .get('/fetchTasks?id=todo_1')
       .set('Accept', '*/*')
       .expect(200, done)
-      .expect('Content-Type', 'text/plain')
-      .expect(/taskId/);
+      .expect('Content-Type', 'text/plain');
   });
 });
 
 describe('POST', () => {
-  it('should handle post request ', done => {
+  it('should handle post request and save new Todo to resources', done => {
+    const newTodo = {
+      title: 'newTodo',
+      tasks: ['task1', 'task2', 'task3']
+    };
     request(app.respond.bind(app))
       .post('/postNewTodos')
-      .send('{title:newTodo,task:[]}')
+      .send(newTodo)
       .expect(200, done);
   });
 });

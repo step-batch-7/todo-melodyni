@@ -1,14 +1,11 @@
 [
   {
-    "id": "todo_1",
-    "title": "Homework",
+    "id": 1580986948635,
+    "title": "newTodo",
     "tasks": [
-      {
-        "taskId": "todo_1_task_1",
-        "taskName": "learning server",
-        "status": true
-      }
-    ],
-    "status": false
+      { "taskId": 1580986948635, "taskName": "task1", "status": false },
+      { "taskId": 1580986948635, "taskName": "task2", "status": false },
+      { "taskId": 1580986948635, "taskName": "task3", "status": false }
+    ]
   }
 ]

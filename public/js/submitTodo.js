@@ -1,6 +1,4 @@
-const displayTodos = function(text) {
-  console.log(text);
-};
+const displayTodos = function(text) {};
 
 const postTodo = function(url, data, callBack) {
   const request = new XMLHttpRequest();
