@@ -35,6 +35,11 @@ img {
   margin-left: 40px;
 }
 
+.miniImg {
+  border-radius: none;
+  border: none;
+}
+
 .navBar {
   display: flex;
   justify-content: space-between;

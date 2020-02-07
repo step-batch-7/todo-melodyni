@@ -1,10 +1,5 @@
-const postTodo = function(url, data, callBack) {
+const postTodo = function(url, data) {
   const request = new XMLHttpRequest();
-  request.onload = function() {
-    if (this.status === 200) {
-      callBack(this.responseText);
-    }
-  };
   request.open('POST', url);
   request.send(JSON.stringify(data));
 };
@@ -16,7 +11,7 @@ const saveTodo = function() {
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
   const tasks = taskElements.map(getValue);
   const todoContent = { title, tasks };
-  postTodo('/postNewTodos', todoContent, displayTodos);
+  postTodo('/postNewTodos', todoContent);
 };
 
 const getTaskInputBox = function() {
@@ -88,6 +83,7 @@ const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" class="checkBox __status__">
   <div class="task">__taskName__</div>
+  <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
 </div><br>`;
 
 const fetchResources = function(url, callBack) {
