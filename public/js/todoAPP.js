@@ -7,7 +7,7 @@ const saveTodo = function() {
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
   const tasks = taskElements.map(getValue);
   const todoContent = JSON.stringify({ title, tasks });
-  sendXMLRequest('POST', '/postNewTodos', todoContent);
+  sendXMLRequest('POST', '/postNewTodos', goToHome, todoContent);
 };
 
 const getTaskInputBox = function() {
@@ -57,7 +57,8 @@ const fillTemplate = function(template, propertyBag) {
 };
 
 const generateTaskDiv = task => fillTemplate(taskTemplate, task);
-const displayTasks = function(tasks) {
+const displayTasks = function(responseText) {
+  const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
   show('#secondPage');
 };
@@ -65,7 +66,7 @@ const displayTasks = function(tasks) {
 const loadTasks = todoId => {
   hide('#firstPage');
   show('#secondPage');
-  sendXMLRequest(`/fetchTasks?id=${todoId}`, displayTasks);
+  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
 const todoTemplate = `
