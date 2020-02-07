@@ -60,6 +60,14 @@ describe('POST', () => {
   });
 });
 
+describe('DELETE', () => {
+  it('should delete the given tasks from the todo DATABASE', done => {
+    request(app.respond.bind(app))
+      .delete('/deleteTask')
+      .expect(200, done);
+  });
+});
+
 describe('METHOD not allowed', () => {
   it('should return 405 if the requested method is not allowed', done => {
     request(app.respond.bind(app))
