@@ -1,8 +1,4 @@
-const postTodo = function(url, data) {
-  const request = new XMLHttpRequest();
-  request.open('POST', url);
-  request.send(JSON.stringify(data));
-};
+const goToHome = function(responseText) {};
 
 const getValue = element => element.value;
 
@@ -10,8 +6,8 @@ const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
   const tasks = taskElements.map(getValue);
-  const todoContent = { title, tasks };
-  postTodo('/postNewTodos', todoContent);
+  const todoContent = JSON.stringify({ title, tasks });
+  sendXMLRequest('POST', '/postNewTodos', todoContent);
 };
 
 const getTaskInputBox = function() {
@@ -69,7 +65,7 @@ const displayTasks = function(tasks) {
 const loadTasks = todoId => {
   hide('#firstPage');
   show('#secondPage');
-  fetchResources(`/fetchTasks?id=${todoId}`, displayTasks);
+  sendXMLRequest(`/fetchTasks?id=${todoId}`, displayTasks);
 };
 
 const todoTemplate = `
@@ -86,20 +82,22 @@ const taskTemplate = `
   <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
 </div><br>`;
 
-const fetchResources = function(url, callBack) {
+const sendXMLRequest = function(method, url, callBack, data) {
   const request = new XMLHttpRequest();
   request.onload = function() {
     if (this.status === 200) {
-      callBack(JSON.parse(this.responseText));
+      callBack(this.responseText);
     }
   };
-  request.open('GET', url);
-  request.send();
+  request.open(method, url);
+  request.send(data);
 };
 
-const displayTodos = todos =>
-  insertHTML('#todo', todos.map(generateTodoDiv).join('\n'));
+const displayTodos = responseText => {
+  const todos = JSON.parse(responseText);
+  return insertHTML('#todo', todos.map(generateTodoDiv).join('\n'));
+};
 
-const main = () => fetchResources('oldTodos', displayTodos);
+const main = () => sendXMLRequest('GET', 'oldTodos', displayTodos);
 
 window.onload = main;
