@@ -29,5 +29,7 @@
   ✔  * write test for a get Handler that serves old todo data to client
   ✔  * fill taskTemplate template with tasks of given id
 
-   write for a feature that enable todo app to save todos
-   
+--done-- write for a feature that enable todo app to save todos
+   display the added todo on home page after adding it to file
+
+
