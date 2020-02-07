@@ -1,5 +1,9 @@
 const goToHome = function(responseText) {};
 
+const deleteTask = function(id) {
+  sendXMLRequest('DELETE', '/deleteTask', goToHome, id);
+};
+
 const getValue = element => element.value;
 
 const saveTodo = function() {
