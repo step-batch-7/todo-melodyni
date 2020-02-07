@@ -61,6 +61,7 @@ const fillTemplate = function(template, propertyBag) {
 };
 
 const generateTaskDiv = task => fillTemplate(taskTemplate, task);
+
 const displayTasks = function(responseText) {
   const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
