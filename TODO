@@ -31,5 +31,8 @@
 
 --done-- write for a feature that enable todo app to save todos
 
-
+ Delete an item from to-do list
+  ✔  * add test for checking the delete request flow
+  ✔  * send XHR to delete todo item
+ * handle delete request at server
 
