@@ -38,5 +38,5 @@
 
 Delete a todo from list
   ✔  * handle delete request at server
-* send XHR to delete todo item
-* add delete icon on todos
+  ✔  * send XHR to delete todo item
+  ✔  * add delete icon on todos

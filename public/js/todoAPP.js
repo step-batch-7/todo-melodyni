@@ -4,6 +4,10 @@ const deleteTask = function(id) {
   sendXMLRequest('DELETE', '/deleteTask', goToHome, id);
 };
 
+const deleteTodo = function(id) {
+  sendXMLRequest('DELETE', '/deleteTodo', goToHome, id);
+};
+
 const getValue = element => element.value;
 
 const saveTodo = function() {
@@ -75,10 +79,11 @@ const loadTasks = todoId => {
 };
 
 const todoTemplate = `
-<div class="log" id="__id__" onclick="loadTasks('__id__')" > 
-  <h1 class="title" id="__id__">
-    <span>__title__</span>
-  </h1>
+<div style="display:flex;justify-content:end;margin:0px" >
+  <div class="log" id="__id__" onclick="loadTasks('__id__')" > 
+    <h1 class="title" id="__id__">__title__</h1>
+  </div>
+  <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
 </div>`;
 
 const taskTemplate = `
