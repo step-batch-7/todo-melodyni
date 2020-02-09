@@ -1,1 +1,45 @@
-[]
+[
+  {
+    "id": "1581241462946",
+    "title": "helo",
+    "tasks": [
+      {
+        "taskId": "1581241462946_1",
+        "taskName": "pelo",
+        "status": "unchecked"
+      },
+      {
+        "taskId": "1581241462946_0",
+        "taskName": "jelo",
+        "status": "unchecked"
+      }
+    ]
+  },
+  {
+    "id": "1581206547519",
+    "title": "ragini",
+    "tasks": [
+      {
+        "taskId": "1581206547519_0",
+        "taskName": "cycling",
+        "status": "unchecked"
+      }
+    ]
+  },
+  {
+    "id": "1581240764704",
+    "title": "making checkbox status toggle",
+    "tasks": [
+      {
+        "taskId": "1581240764704_1",
+        "taskName": "if unchecked make checked",
+        "status": "checked"
+      },
+      {
+        "taskId": "1581240764704_0",
+        "taskName": "if checked make unchecked",
+        "status": "unchecked"
+      }
+    ]
+  }
+]
