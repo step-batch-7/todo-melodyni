@@ -1,15 +1,18 @@
 const goToHome = function(responseText) {};
 
-const deleteTask = function(id) {
-  sendXMLRequest('DELETE', '/deleteTask', goToHome, id);
+const deleteTask = function(taskId) {
+  sendXMLRequest('DELETE', '/deleteTask', goToHome, taskId);
 };
 
-const deleteTodo = function(id) {
-  sendXMLRequest('DELETE', '/deleteTodo', goToHome, id);
+const deleteTodo = function(todoId) {
+  sendXMLRequest('DELETE', '/deleteTodo', goToHome, todoId);
+};
+
+const toggleTaskStatus = function(taskId) {
+  sendXMLRequest('POST', '/toggleTaskStatus', goToHome, taskId);
 };
 
 const getValue = element => element.value;
-
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
@@ -65,7 +68,6 @@ const fillTemplate = function(template, propertyBag) {
 };
 
 const generateTaskDiv = task => fillTemplate(taskTemplate, task);
-
 const displayTasks = function(responseText) {
   const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
@@ -88,7 +90,7 @@ const todoTemplate = `
 
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
-  <input type="checkbox" class="checkBox __status__">
+  <input type="checkbox" id="taskId" class="checkBox" onclick="toggleTaskStatus('__taskId__')" __status__>
   <div class="task">__taskName__</div>
   <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
 </div><br>`;
@@ -110,5 +112,4 @@ const displayTodos = responseText => {
 };
 
 const main = () => sendXMLRequest('GET', 'oldTodos', displayTodos);
-
 window.onload = main;

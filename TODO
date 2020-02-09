@@ -36,7 +36,11 @@
   ✔  * send XHR to delete todo item
   ✔  * handle delete request at server
 
-Delete a todo from list
+--done-- Delete a todo from list
   ✔  * handle delete request at server
   ✔  * send XHR to delete todo item
   ✔  * add delete icon on todos
+
+--done-- Mark tasks as done and undone
+  ✔  * handle toggleStatus request at server
+  ✔  * send XHR to toggleStatus of tasks
