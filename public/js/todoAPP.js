@@ -1,15 +1,11 @@
 const goToHome = function(responseText) {};
 
-const deleteTask = function(taskId) {
-  sendXMLRequest('DELETE', '/deleteTask', goToHome, taskId);
+const deleteTask = function(id) {
+  sendXMLRequest('DELETE', '/deleteTask', goToHome, id);
 };
 
-const deleteTodo = function(todoId) {
-  sendXMLRequest('DELETE', '/deleteTodo', goToHome, todoId);
-};
-
-const toggleTaskStatus = function(taskId) {
-  sendXMLRequest('POST', '/toggleTaskStatus', goToHome, taskId);
+const deleteTodo = function(id) {
+  sendXMLRequest('DELETE', '/deleteTodo', goToHome, id);
 };
 
 const getValue = element => element.value;
@@ -92,7 +88,7 @@ const todoTemplate = `
 
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
-  <input type="checkbox" id="taskId" class="checkBox" onclick="toggleTaskStatus('__taskId__')" __status__>
+  <input type="checkbox" class="checkBox __status__">
   <div class="task">__taskName__</div>
   <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
 </div><br>`;
