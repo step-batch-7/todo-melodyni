@@ -12,7 +12,16 @@ const toggleTaskStatus = function(taskId) {
   sendXMLRequest('POST', '/toggleTaskStatus', goToHome, taskId);
 };
 
+const editTask = function(taskId) {
+  if (event.keyCode === 13) {
+    const editedTask = event.target.innerHTML;
+    const content = JSON.stringify({ editedTask, taskId });
+    sendXMLRequest('POST', '/editTask', goToHome, content);
+  }
+};
+
 const getValue = element => element.value;
+
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
@@ -83,10 +92,10 @@ const loadTasks = todoId => {
 const todoTemplate = `
 <div style="display:flex;justify-content:end;margin:0px" >
   <div class="log" id="__id__" onclick="loadTasks('__id__')" > 
-    <h1 class="title" id="__id__">__title__</h1>
+    <h1 class="title" >__title__</h1>
     <div>
-    <img src="/images/edit.png" class="miniImg" alt="edit" onclick="editTitle('__id__')"></img>
-    <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
+      <img src="/images/edit.png" class="miniImg" alt="edit" ></img>
+      <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
     </div>
   </div>
 </div>`;
@@ -94,9 +103,12 @@ const todoTemplate = `
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" onclick="toggleTaskStatus('__taskId__')" __status__>
-  <div class="task">__taskName__</div>
+  <div class="task">
+    <h6 contenteditable ="true" onkeypress="editTask('__taskId__')">__taskName__<h6>
+  </div>
   <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
-</div><br>`;
+</div>
+<br>`;
 
 const sendXMLRequest = function(method, url, callBack, data) {
   const request = new XMLHttpRequest();

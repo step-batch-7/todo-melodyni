@@ -56,7 +56,7 @@ Home Page: If not logged in it is a login page else it is the user's todo page/d
 
 -------------------------------------------------------------------------------------
 
-add functionality to edit the existing todo title
-add edit logo 
-send xhr to edit logo
+add functionality to edit the existing task 
+  ✔  * add edit logo 
+  ✔  * send xhr to edit task
 handle edit request at server

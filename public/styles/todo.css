@@ -14,8 +14,10 @@ h6 {
   margin: 15px;
   padding-left: 40px;
   font-family: sans-serif;
+  font-size: x-large;
   font-weight: 70;
   color: #aeb6b8;
+  outline: none;
 }
 
 a {
@@ -123,7 +125,6 @@ textarea {
   font-family: sans-serif;
   font-weight: 200;
   color: #aeb6b8;
-  padding-left: 25px;
 }
 
 .checkBox {
@@ -132,8 +133,7 @@ textarea {
   width: 30px;
   border: 1px solid #aeb6b8;
   border-radius: 5px;
-  margin: 0px;
-  margin-right: 20px;
+  margin-top: 12px;
 }
 
 .taskInput {
