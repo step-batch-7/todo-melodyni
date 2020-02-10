@@ -59,7 +59,14 @@ describe('POST', () => {
       .expect(200, done);
   });
 
-  it('Should toggle status of given task for /toggleTaskStatus', done => {
+  it('Should set the status to checked of given task if it is unchecked for /toggleTaskStatus', done => {
+    request(app.respond.bind(app))
+      .post('/toggleTaskStatus')
+      .send('1581336711285_0')
+      .expect(200, done);
+  });
+
+  it('Should set the status to unchecked of given task if it is checked for /toggleTaskStatus', done => {
     request(app.respond.bind(app))
       .post('/toggleTaskStatus')
       .send('1581336711285_0')
