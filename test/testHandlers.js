@@ -1,5 +1,6 @@
-const { truncateSync } = require('fs');
 const request = require('supertest');
+const fs = require('fs');
+const sinon = require('sinon');
 const { app } = require('../lib/handler');
 const config = require('../config');
 
@@ -32,7 +33,7 @@ describe('GET', () => {
       .get('/oldTodos')
       .set('Accept', '*/*')
       .expect(200, done)
-      .expect('Content-Type', 'text/plain');
+      .expect('Content-Type', 'application/json');
   });
 
   it('should give all tasks for the given id in GET url', done => {
@@ -40,11 +41,13 @@ describe('GET', () => {
       .get('/fetchTasks?id=todo_1')
       .set('Accept', '*/*')
       .expect(200, done)
-      .expect('Content-Type', 'text/plain');
+      .expect('Content-Type', 'application/json');
   });
 });
 
 describe('POST', () => {
+  beforeEach(() => sinon.replace(fs, 'writeFileSync', () => {}));
+  afterEach(() => sinon.restore());
   it('should handle post request and save new Todo to resources', done => {
     const newTodo = {
       title: 'newTodo',
@@ -55,15 +58,15 @@ describe('POST', () => {
       .send(newTodo)
       .expect(200, done);
   });
-  after(() => {
-    truncateSync(config.DATABASE);
-  });
 });
 
 describe('DELETE', () => {
+  beforeEach(() => sinon.replace(fs, 'writeFileSync', () => {}));
+  afterEach(() => sinon.restore());
   it('should delete the given tasks from the todo DATABASE', done => {
     request(app.respond.bind(app))
       .delete('/deleteTask')
+      .send('1581336711285')
       .expect(200, done);
   });
 });
