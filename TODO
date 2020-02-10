@@ -47,16 +47,16 @@
 
 -------- REQUIREMENTS 2 -----------------
 
-Edit title: Ability to edit their existing todo list title.
-Edit tasks: Ability to edit their existing tasks.
-Search by title:  Search the list by its title words.
-Search by tasks: Search the todo item by its matched words.
-User Todos: A user can log in and log out off their account and work on their own todos.
-Home Page: If not logged in it is a login page else it is the user's todo page/dashboard.
+1. Edit title: Ability to edit their existing todo list title.
+2. Edit tasks: Ability to edit their existing tasks.
+3. Search by title:  Search the list by its title words.
+4. Search by tasks: Search the todo item by its matched words.
+5. User Todos: A user can log in and log out off their account and work on their own todos.
+6. Home Page: If not logged in it is a login page else it is the user's todo page/dashboard.
 
 -------------------------------------------------------------------------------------
 
 add functionality to edit the existing task 
   ✔  * add edit logo 
   ✔  * send xhr to edit task
-handle edit request at server
+  ✔  * handle edit request at server
