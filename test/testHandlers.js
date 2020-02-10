@@ -77,9 +77,16 @@ describe('POST', () => {
 describe('DELETE', () => {
   beforeEach(() => sinon.replace(fs, 'writeFileSync', () => {}));
   afterEach(() => sinon.restore());
-  it('should delete the given tasks from the todo DATABASE', done => {
+  it('should delete the given tasks from the todo', done => {
     request(app.respond.bind(app))
       .delete('/deleteTask')
+      .send('1581336711285')
+      .expect(200, done);
+  });
+
+  it('Should delete the given todo from todoList', done => {
+    request(app.respond.bind(app))
+      .delete('/deleteTodo')
       .send('1581336711285')
       .expect(200, done);
   });
