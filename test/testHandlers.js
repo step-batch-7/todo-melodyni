@@ -58,10 +58,18 @@ describe('POST', () => {
       .send(newTodo)
       .expect(200, done);
   });
+
   it('Should toggle status of given task for /toggleTaskStatus', done => {
     request(app.respond.bind(app))
       .post('/toggleTaskStatus')
       .send('1581336711285_0')
+      .expect(200, done);
+  });
+
+  it('Should edit the given task for /editTask', done => {
+    request(app.respond.bind(app))
+      .post('/editTask')
+      .send('{"taskId":"1581336711285_0","editedTask":"taskA"}')
       .expect(200, done);
   });
 });
