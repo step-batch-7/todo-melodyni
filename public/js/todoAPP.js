@@ -84,8 +84,11 @@ const todoTemplate = `
 <div style="display:flex;justify-content:end;margin:0px" >
   <div class="log" id="__id__" onclick="loadTasks('__id__')" > 
     <h1 class="title" id="__id__">__title__</h1>
+    <div>
+    <img src="/images/edit.png" class="miniImg" alt="edit" onclick="editTitle('__id__')"></img>
+    <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
+    </div>
   </div>
-  <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
 </div>`;
 
 const taskTemplate = `

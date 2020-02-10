@@ -17,6 +17,7 @@ h6 {
   font-weight: 70;
   color: #aeb6b8;
 }
+
 a {
   text-decoration: none;
 }
@@ -70,6 +71,8 @@ img {
 }
 
 .log {
+  display: flex;
+  justify-content: space-between;
   height: 120px;
   width: 600px;
   background-color: #3b4446;

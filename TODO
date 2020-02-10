@@ -44,3 +44,19 @@
 --done-- Mark tasks as done and undone
   ✔  * handle toggleStatus request at server
   ✔  * send XHR to toggleStatus of tasks
+
+-------- REQUIREMENTS 2 -----------------
+
+Edit title: Ability to edit their existing todo list title.
+Edit tasks: Ability to edit their existing tasks.
+Search by title:  Search the list by its title words.
+Search by tasks: Search the todo item by its matched words.
+User Todos: A user can log in and log out off their account and work on their own todos.
+Home Page: If not logged in it is a login page else it is the user's todo page/dashboard.
+
+-------------------------------------------------------------------------------------
+
+add functionality to edit the existing todo title
+add edit logo 
+send xhr to edit logo
+handle edit request at server
