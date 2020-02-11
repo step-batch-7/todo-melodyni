@@ -20,6 +20,22 @@ const editTask = function(taskId) {
   }
 };
 
+const getTodoForm = () => {
+  const html = `
+  <div class="navBar">
+    <img src="images/save.png" alt="save" onclick="saveTodo()" />
+    <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
+    <a href="index.html"><img src="images/cross.png" alt="save"></img></a>
+  </div>
+  <hr />
+  <br />
+  <div id="newTask"></div>`;
+  insertHTML('#todoDisplay', html);
+  const todoDisplay = document.querySelector('#todoDisplay');
+  todoDisplay.style['background-color'] = '#3b4446';
+  attachEventListener();
+};
+
 const getValue = element => element.value;
 
 const saveTodo = function() {
@@ -44,7 +60,7 @@ const appendHTML = (selector, html) => {
   document.querySelector(selector).append(html);
 };
 
-const insertInputBox = function(event) {
+const insertInputBox = function() {
   if (event.key === 'Enter') {
     appendHTML('#newTask', getTaskInputBox());
   }
@@ -61,8 +77,8 @@ const insertHTML = (selector, html) => {
   document.querySelector(selector).innerHTML = html;
 };
 
-const show = selector =>
-  document.querySelector(selector).classList.remove('hidden');
+// const show = selector =>
+//   document.querySelector(selector).classList.remove('hidden');
 
 const fillTemplate = function(template, propertyBag) {
   const keys = Object.keys(propertyBag);
@@ -136,5 +152,8 @@ const displayTodos = responseText => {
   return insertHTML('#todo', todos.map(generateTodoDiv).join('\n'));
 };
 
-const main = () => sendXMLRequest('GET', 'oldTodos', displayTodos);
+const main = () => {
+  sendXMLRequest('GET', 'oldTodos', displayTodos);
+  // attachEventListener();
+}
 window.onload = main;
