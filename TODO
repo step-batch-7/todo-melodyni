@@ -61,10 +61,12 @@ add functionality to edit the existing task
   ✔  * send xhr to edit task
   ✔  * handle edit request at server
 
-todo for tommorow-------------
-*  add callback function for those function that is sending requests
-* debug the error of order change
-* replace keyword delete with splice
-* change id generation
-* remove default.txt
-* write unit test 
+todo for tomorrow-------------
+  ✔  * remove default.txt and change it into json
+  ✔  * replace keyword delete with splice
+  ✔  * add eslintrc
+  ✔  * change task id generation
+  * add callback function for those function that is sending requests
+  * debug the error of order change
+  * write unit test 
+  * convert into single page website 
