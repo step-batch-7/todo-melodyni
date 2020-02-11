@@ -81,12 +81,10 @@ const generateTaskDiv = task => fillTemplate(taskTemplate, task);
 const displayTasks = function(responseText) {
   const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
-  show('#secondPage');
 };
 
 const loadTasks = todoId => {
-  hide('#firstPage');
-  show('#secondPage');
+  show('#todoDisplay');
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 

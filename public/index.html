@@ -6,7 +6,6 @@
     <script src="./js/todoApp.js"></script>
   </head>
   <body>
-    <div id="firstPage">
       <div class="navBar">
         <h1>TO DO</h1>
         <div class="icon">
@@ -16,19 +15,16 @@
       </div>
       <hr />
       <div class="todo">
-        <div class="left"></div>
         <div class="list" id="todo"></div>
-        <div class="right"></div>
+        <div id="todoDisplay" class="todoItem hidden">
+          <div class="navBar">
+            <img src="images/save.png" alt="save" />
+            <a href="index.html"><img src="images/cross.png" alt="cross"/></a>
+          </div>
+          <hr />
+          <br />
+          <div id="items">__TODO_ITEMS__</div>
+        </div>
       </div>
-    </div>
-    <div id="secondPage" class="todoItem hidden">
-      <div class="navBar">
-        <img src="images/save.png" alt="save" />
-        <a href="index.html"><img src="images/cross.png" alt="cross"/></a>
-      </div>
-      <hr />
-      <br />
-      <div id="items">__TODO_ITEMS__</div>
-    </div>
   </body>
 </html>
