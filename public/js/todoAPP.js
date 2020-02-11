@@ -81,7 +81,17 @@ const displayTasks = function(responseText) {
 };
 
 const loadTasks = todoId => {
-  show('#todoDisplay');
+  const html = `
+  <div class="navBar">
+    <img src="images/save.png" alt="save" />
+    <a href="index.html"><img src="images/cross.png" alt="cross"/></a>
+  </div>
+  <hr />
+  <br />
+  <div id="items">__TODO_ITEMS__</div>`;
+  insertHTML('#todoDisplay', html);
+  const todoDisplay = document.querySelector('#todoDisplay');
+  todoDisplay.style['background-color'] = '#3b4446';
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 

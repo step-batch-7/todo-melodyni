@@ -72,10 +72,13 @@ img {
   border-left: 8px solid #aeb6b8;
   margin-bottom: 15px;
 }
-
-.todoItem {
-  padding-top: 10px;
+.todoItem{
   background-color: #3b4446;
+}
+
+.todoItem,
+.todoDisplay{
+  padding-top: 10px;
   height: 800px;
   width: 900px;
   margin-left: 270px;
