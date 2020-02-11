@@ -13,7 +13,7 @@ const toggleTaskStatus = function(taskId) {
 };
 
 const editTask = function(taskId) {
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     const editedTask = event.target.innerHTML;
     const content = JSON.stringify({ editedTask, taskId });
     sendXMLRequest('POST', '/editTask', goToHome, content);
@@ -34,7 +34,7 @@ const getTaskInputBox = function() {
   const html = document.createElement('div');
   html.innerHTML = `
   <input type="checkbox" class="checkBox __status__">
-  <input type="text" class="taskInput" onkeypress="insertInputBox(event)"></input>`;
+  <input type="text" class="taskInput" onkeypress="insertInputBox(event)">`;
   html.className = 'taskBox';
   html.id = '__taskId__';
   return html;
@@ -45,7 +45,7 @@ const appendHTML = (selector, html) => {
 };
 
 const insertInputBox = function(event) {
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     appendHTML('#newTask', getTaskInputBox());
   }
 };
@@ -57,8 +57,9 @@ const attachEventListener = function() {
 
 const generateTodoDiv = todo => fillTemplate(todoTemplate, todo);
 
-const insertHTML = (selector, html) =>
-  (document.querySelector(selector).innerHTML = html);
+const insertHTML = (selector, html) => {
+  document.querySelector(selector).innerHTML = html;
+};
 
 const hide = selector =>
   document.querySelector(selector).classList.add('hidden');
@@ -94,26 +95,30 @@ const todoTemplate = `
   <div class="log" id="__id__" onclick="loadTasks('__id__')" > 
     <h1 class="title" >__title__</h1>
     <div>
-      <img src="/images/edit.png" class="miniImg" alt="edit" ></img>
-      <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTodo('__id__')"></img>
+      <img src="/images/edit.png" class="miniImg" alt="edit" >
+      <img src="/images/bin.png" class="miniImg" alt="delete" 
+        onclick="deleteTodo('__id__')">
     </div>
   </div>
 </div>`;
 
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
-  <input type="checkbox" id="taskId" class="checkBox" onclick="toggleTaskStatus('__taskId__')" __status__>
+  <input type="checkbox" id="taskId" class="checkBox" 
+    onclick="toggleTaskStatus('__taskId__')" __status__>
   <div class="task">
-    <h6 contenteditable ="true" onkeypress="editTask('__taskId__')">__taskName__<h6>
+    <h6 contenteditable onkeypress="editTask('__taskId__')">__taskName__<h6>
   </div>
-  <img src="/images/bin.png" class="miniImg" alt="delete" onclick="deleteTask('__taskId__')"></img>
+  <img src="/images/bin.png" class="miniImg" alt="delete" 
+    onclick="deleteTask('__taskId__')">
 </div>
 <br>`;
 
 const sendXMLRequest = function(method, url, callBack, data) {
+  const STATUS_CODES = { OK: 200 };
   const request = new XMLHttpRequest();
   request.onload = function() {
-    if (this.status === 200) {
+    if (this.status === STATUS_CODES.OK) {
       callBack(this.responseText);
     }
   };
