@@ -77,9 +77,6 @@ const insertHTML = (selector, html) => {
   document.querySelector(selector).innerHTML = html;
 };
 
-// const show = selector =>
-//   document.querySelector(selector).classList.remove('hidden');
-
 const fillTemplate = function(template, propertyBag) {
   const keys = Object.keys(propertyBag);
   const replaceKeyByValue = function(template, key) {
@@ -104,7 +101,7 @@ const loadTasks = todoId => {
   </div>
   <hr />
   <br />
-  <div id="items">__TODO_ITEMS__</div>`;
+  <div id="items"></div>`;
   insertHTML('#todoDisplay', html);
   const todoDisplay = document.querySelector('#todoDisplay');
   todoDisplay.style['background-color'] = '#3b4446';
@@ -113,12 +110,13 @@ const loadTasks = todoId => {
 
 const todoTemplate = `
 <div style="display:flex;justify-content:end;margin:0px" >
-  <div class="log" id="__id__" onclick="loadTasks('__id__')" > 
+  <div class="log" id="__id__" > 
     <h1 class="title" >__title__</h1>
     <div>
-      <img src="/images/edit.png" class="miniImg" alt="edit" >
-      <img src="/images/bin.png" class="miniImg" alt="delete" 
-        onclick="deleteTodo('__id__')">
+    <img src="/images/bin.png" class="miniImg" alt="delete" 
+      onclick="deleteTodo('__id__')">
+    <img src="/images/open.png" class="miniImg" alt="open" 
+      onclick="loadTasks('__id__')" >
     </div>
   </div>
 </div>`;
