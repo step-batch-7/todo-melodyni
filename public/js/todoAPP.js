@@ -61,9 +61,6 @@ const insertHTML = (selector, html) => {
   document.querySelector(selector).innerHTML = html;
 };
 
-const hide = selector =>
-  document.querySelector(selector).classList.add('hidden');
-
 const show = selector =>
   document.querySelector(selector).classList.remove('hidden');
 
