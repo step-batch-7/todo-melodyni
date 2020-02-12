@@ -36,6 +36,12 @@ const updateTodo = todoId => {
   sendXMLRequest('POST', '/updateTodo', goToHome, todoContent);
 };
 
+const createTodoDisplay = html => {
+  insertHTML('#todoDisplay', html);
+  const todoDisplay = document.querySelector('#todoDisplay');
+  todoDisplay.style['background-color'] = '#3b4446';
+};
+
 const getTodoForm = () => {
   const html = `
   <div class="navBar">
@@ -47,10 +53,24 @@ const getTodoForm = () => {
   <hr />
   <br />
   <div id="newTask"></div>`;
-  insertHTML('#todoDisplay', html);
-  const todoDisplay = document.querySelector('#todoDisplay');
-  todoDisplay.style['background-color'] = '#3b4446';
+  createTodoDisplay(html);
   attachEventListener();
+};
+
+const loadTasks = (todoId, title) => {
+  const html = `
+  <div class="navBar">
+    <img src="images/save.png" alt="save" class="save" 
+      onclick="updateTodo(${todoId})"/>
+    <input type="text" id="todoTitle" value="${title}">
+    <a href="index.html"><img src="images/cross.png" alt="cross"
+      class="close"/></a>
+  </div>
+  <hr />
+  <br />
+  <div id="items"></div>`;
+  createTodoDisplay(html);
+  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
 const getValue = element => element.value;
@@ -101,24 +121,6 @@ const generateTaskDiv = task => fillTemplate(taskTemplate, task);
 const displayTasks = function(responseText) {
   const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
-};
-
-const loadTasks = (todoId, title) => {
-  const html = `
-  <div class="navBar">
-    <img src="images/save.png" alt="save" class="save" 
-      onclick="updateTodo(${todoId})"/>
-    <input type="text" id="todoTitle" value="${title}">
-    <a href="index.html"><img src="images/cross.png" alt="cross"
-      class="close"/></a>
-  </div>
-  <hr />
-  <br />
-  <div id="items"></div>`;
-  insertHTML('#todoDisplay', html);
-  const todoDisplay = document.querySelector('#todoDisplay');
-  todoDisplay.style['background-color'] = '#3b4446';
-  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
 const todoTemplate = `

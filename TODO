@@ -69,5 +69,6 @@ todo for tomorrow-------------
   ✔  * modify css class names
   ✔  * convert into single page website 
   ✔  * add callback function for those function that is sending requests
+  * make gotoHome handler and remove location.reload()
   * debug the error of order change
   * write unit test 
