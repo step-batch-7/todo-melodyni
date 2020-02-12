@@ -53,8 +53,7 @@ const getTodoForm = () => {
   <div class="navBar">
     <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
     <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
-    <a href="index.html"><img src="images/cross.png" alt="close" 
-      class="close"></a>
+    <img src="images/cross.png" alt="close" class="close" onclick="goToHome()">
   </div>
   <hr />
   <br />
@@ -72,8 +71,7 @@ const loadTasks = (todoId, title) => {
     <img src="images/save.png" alt="save" class="save" 
       onclick="updateTodo(${todoId})"/>
     <input type="text" id="todoTitle" value="${title}">
-    <a href="index.html"><img src="images/cross.png" alt="cross"
-      class="close"/></a>
+    <img src="images/cross.png" alt="cross" class="close" onclick="goToHome()"/>
   </div>
   <hr />
   <br />
