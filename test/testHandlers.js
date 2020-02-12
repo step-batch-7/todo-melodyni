@@ -72,10 +72,11 @@ describe('POST', () => {
       .expect(200, done);
   });
 
-  it('Should edit the given task for /editTask', done => {
+  it('Should update the todo with given data for /updateTodo', done => {
+    const tasks = [{ taskId: '1581336711285_0', task: 'modified Task' }];
     request(app.respond.bind(app))
-      .post('/editTask')
-      .send('{"taskId":"1581336711285_0","editedTask":"taskA"}')
+      .post('/updateTodo')
+      .send(`{"todoId":"1581336711285","title":"newTitle", "tasks":${JSON.stringify(tasks)}}`)
       .expect(200, done);
   });
 });
