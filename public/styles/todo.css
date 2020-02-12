@@ -69,6 +69,7 @@ hr {
 
 .todo-container {
   display: flex;
+  align-items: flex-start;
 }
 
 .list {
@@ -121,12 +122,13 @@ input {
 }
 
 .task {
-  height: 40px;
-  width: 600px;
-  font-size: x-large;
+  width: 15vw;
   font-family: sans-serif;
-  font-weight: 200;
+  font-weight: 70;
+  font-size: 1.5vh;
   color: #aeb6b8;
+  outline: none;
+  margin:2px 0px 0px 2px;
 }
 
 .taskInput {
