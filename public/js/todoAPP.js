@@ -1,23 +1,33 @@
-const goToHome = function(responseText) {};
+const goToHome = function() {
+  location.reload(true);
+};
 
 const deleteTask = function(taskId) {
-  sendXMLRequest('DELETE', '/deleteTask', goToHome, taskId);
+  sendXMLRequest('DELETE', '/deleteTask', displayTasks, taskId);
 };
 
 const deleteTodo = function(todoId) {
-  sendXMLRequest('DELETE', '/deleteTodo', goToHome, todoId);
+  sendXMLRequest('DELETE', '/deleteTodo', displayTodos, todoId);
 };
 
 const toggleTaskStatus = function(taskId) {
-  sendXMLRequest('POST', '/toggleTaskStatus', goToHome, taskId);
+  sendXMLRequest('POST', '/toggleTaskStatus', () => {}, taskId);
 };
 
 const editTask = function(taskId) {
   if (event.key === 'Enter') {
     const editedTask = event.target.innerHTML;
     const content = JSON.stringify({ editedTask, taskId });
-    sendXMLRequest('POST', '/editTask', goToHome, content);
+    sendXMLRequest('POST', '/editTask', () => {}, content);
   }
+};
+
+const saveTodo = function() {
+  const title = document.querySelector('#todoTitle').value;
+  const taskElements = Array.from(document.querySelectorAll('.taskInput'));
+  const tasks = taskElements.map(getValue);
+  const todoContent = JSON.stringify({ title, tasks });
+  sendXMLRequest('POST', '/postNewTodos', goToHome, todoContent);
 };
 
 const getTodoForm = () => {
@@ -38,14 +48,6 @@ const getTodoForm = () => {
 };
 
 const getValue = element => element.value;
-
-const saveTodo = function() {
-  const title = document.querySelector('#todoTitle').value;
-  const taskElements = Array.from(document.querySelectorAll('.taskInput'));
-  const tasks = taskElements.map(getValue);
-  const todoContent = JSON.stringify({ title, tasks });
-  sendXMLRequest('POST', '/postNewTodos', goToHome, todoContent);
-};
 
 const getTaskInputBox = function() {
   const html = document.createElement('div');
@@ -89,6 +91,7 @@ const fillTemplate = function(template, propertyBag) {
 };
 
 const generateTaskDiv = task => fillTemplate(taskTemplate, task);
+
 const displayTasks = function(responseText) {
   const tasks = JSON.parse(responseText);
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
