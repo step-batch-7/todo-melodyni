@@ -113,7 +113,7 @@ const loadTasks = (todoId, title) => {
 };
 
 const todoTemplate = `
-  <div class="log" id="__id__" > 
+  <div class="todo" id="__id__" > 
     <h1 class="title" >__title__</h1>
     <div style="display:flex;justify-content:space-between;">
     <img src="/images/bin.png" alt="delete" class="deleteButton"
@@ -128,7 +128,7 @@ const taskTemplate = `
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
   <div class="task">
-    <h6 contenteditable onkeypress="editTask('__taskId__')" style="margin:2px 0px 0px 2px;">__taskName__</h6>
+    <h6 contenteditable onkeypress="editTask('__taskId__')" >__taskName__</h6>
   </div>
   <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">

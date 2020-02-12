@@ -18,6 +18,7 @@ h6 {
   font-weight: 70;
   color: #aeb6b8;
   outline: none;
+  margin:2px 0px 0px 2px;
 }
 
 a {
@@ -66,17 +67,17 @@ hr {
   justify-content: space-between;
 }
 
-.todo {
+.todo-container {
   display: flex;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 28.5%;
 }
 
-.log {
+.todo {
   display: flex;
   justify-content: space-between;
   width: 25vw;
@@ -91,7 +92,7 @@ hr {
 }
 
 .container {
-  width: 70%;
+  width: 71.5%;
   display: flex;
   justify-content: center;
 }
