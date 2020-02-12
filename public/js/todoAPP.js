@@ -30,6 +30,20 @@ const saveTodo = function() {
   sendXMLRequest('POST', '/postNewTodos', goToHome, todoContent);
 };
 
+const getIdAndValue = element => {
+  const taskId = element.id;
+  const task = element.value;
+  return { taskId, task };
+};
+
+const updateTodo = todoId => {
+  const title = document.querySelector('#todoTitle').value;
+  const taskElements = Array.from(document.querySelectorAll('.task'));
+  const tasks = taskElements.map(getIdAndValue);
+  const todoContent = JSON.stringify({ title, tasks, todoId });
+  sendXMLRequest('POST', '/updateTodo', goToHome, todoContent);
+};
+
 const getTodoForm = () => {
   const html = `
   <div class="navBar">
@@ -100,9 +114,9 @@ const displayTasks = function(responseText) {
 const loadTasks = (todoId, title) => {
   const html = `
   <div class="navBar">
-    <img src="images/save.png" alt="save" class="save"/>
-    <input type="text" id="todoTitle" placeholder="Enter Todo Name...." 
-      value="${title}">
+    <img src="images/save.png" alt="save" class="save" 
+      onclick="updateTodo(${todoId})"/>
+    <input type="text" id="todoTitle" value="${title}">
     <a href="index.html"><img src="images/cross.png" alt="cross"
       class="close"/></a>
   </div>
@@ -130,8 +144,9 @@ const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
-  <div class="task">
-    <h6 contenteditable onkeypress="editTask('__taskId__')" >__taskName__</h6>
+  <div>
+    <input type="text" class="task" onkeypress="editTask('__taskId__')" 
+      value="__taskName__" id="__taskId__">
   </div>
   <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">
