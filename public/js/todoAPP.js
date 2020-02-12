@@ -23,9 +23,10 @@ const editTask = function(taskId) {
 const getTodoForm = () => {
   const html = `
   <div class="navBar">
-    <img src="images/save.png" alt="save" onclick="saveTodo()" />
+    <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
     <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
-    <a href="index.html"><img src="images/cross.png" alt="save"></img></a>
+    <a href="index.html"><img src="images/cross.png" alt="close" 
+      class="close"></a>
   </div>
   <hr />
   <br />
@@ -93,11 +94,14 @@ const displayTasks = function(responseText) {
   insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
 };
 
-const loadTasks = todoId => {
+const loadTasks = (todoId, title) => {
   const html = `
   <div class="navBar">
-    <img src="images/save.png" alt="save" />
-    <a href="index.html"><img src="images/cross.png" alt="cross"/></a>
+    <img src="images/save.png" alt="save" class="save"/>
+    <input type="text" id="todoTitle" placeholder="Enter Todo Name...." 
+      value="${title}">
+    <a href="index.html"><img src="images/cross.png" alt="cross"
+      class="close"/></a>
   </div>
   <hr />
   <br />
@@ -109,29 +113,26 @@ const loadTasks = todoId => {
 };
 
 const todoTemplate = `
-<div style="display:flex;justify-content:end;margin:0px" >
   <div class="log" id="__id__" > 
     <h1 class="title" >__title__</h1>
-    <div>
-    <img src="/images/bin.png" class="miniImg" alt="delete" 
+    <div style="display:flex;justify-content:space-between;">
+    <img src="/images/bin.png" alt="delete" class="deleteButton"
       onclick="deleteTodo('__id__')">
-    <img src="/images/open.png" class="miniImg" alt="open" 
-      onclick="loadTasks('__id__')" >
+    <img src="/images/open.png" alt="open" class="openButton"
+      onclick="loadTasks('__id__', '__title__')" >
     </div>
-  </div>
-</div>`;
+  </div>`;
 
 const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
   <div class="task">
-    <h6 contenteditable onkeypress="editTask('__taskId__')">__taskName__<h6>
+    <h6 contenteditable onkeypress="editTask('__taskId__')" style="margin:2px 0px 0px 2px;">__taskName__</h6>
   </div>
-  <img src="/images/bin.png" class="miniImg" alt="delete" 
+  <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">
-</div>
-<br>`;
+</div>`;
 
 const sendXMLRequest = function(method, url, callBack, data) {
   const STATUS_CODES = { OK: 200 };
@@ -153,5 +154,5 @@ const displayTodos = responseText => {
 const main = () => {
   sendXMLRequest('GET', 'oldTodos', displayTodos);
   // attachEventListener();
-}
+};
 window.onload = main;
