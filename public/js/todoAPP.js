@@ -151,8 +151,6 @@ const displayTodos = responseText => {
   return insertHTML('#todo', todos.map(generateTodoDiv).join('\n'));
 };
 
-const main = () => {
-  sendXMLRequest('GET', 'oldTodos', displayTodos);
-  // attachEventListener();
-};
+const main = () => sendXMLRequest('GET', 'oldTodos', displayTodos);
+
 window.onload = main;
