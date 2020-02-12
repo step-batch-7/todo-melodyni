@@ -61,7 +61,7 @@ add functionality to edit the existing task
   ✔  * send xhr to edit task
   ✔  * handle edit request at server
 
-todo for tomorrow-------------
+Todo for :- 12-02-2020
   ✔  * remove default.txt and change it into json
   ✔  * replace keyword delete with splice
   ✔  * add eslintrc
@@ -71,6 +71,8 @@ todo for tomorrow-------------
   ✔  * add callback function for those function that is sending requests
   ✔  * remove anchors and use gotoHome
   ✔  * debug the error of order change ---fixed temporarily---
+
+Todo for :- 13-02-2020
   * make gotoHome handler and remove location.reload()
   * write unit test 
   * add middleware to validate parameters for the handler
