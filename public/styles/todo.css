@@ -18,7 +18,7 @@ h6 {
   font-weight: 70;
   color: #aeb6b8;
   outline: none;
-  margin:2px 0px 0px 2px;
+  margin: 2px 0px 0px 2px;
 }
 
 a {
@@ -84,12 +84,15 @@ hr {
   width: 25vw;
   background-color: #3b4446;
   border-radius: 7px;
-  border-left: 8px solid #aeb6b8;
   margin-bottom: 2%;
   padding: 2%;
   word-wrap: break-word;
   word-break: break-all;
   hyphens: auto;
+}
+
+.indicator {
+  border-left: 8px solid #aeb6b8;
 }
 
 .container {
@@ -128,7 +131,7 @@ input {
   font-size: 1.5vh;
   color: #aeb6b8;
   outline: none;
-  margin:2px 0px 0px 2px;
+  margin: 2px 0px 0px 2px;
 }
 
 .taskInput {

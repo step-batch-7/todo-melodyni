@@ -42,7 +42,13 @@ const createTodoDisplay = html => {
   todoDisplay.style['background-color'] = '#3b4446';
 };
 
+const hideIndicator = function() {
+  const todos = document.querySelectorAll('.indicator');
+  todos.forEach(todo => todo.classList.remove('indicator'));
+};
+
 const getTodoForm = () => {
+  hideIndicator();
   const html = `
   <div class="navBar">
     <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
@@ -58,6 +64,9 @@ const getTodoForm = () => {
 };
 
 const loadTasks = (todoId, title) => {
+  hideIndicator();
+  const todo = document.querySelector(`.todo[id="${todoId}"`);
+  todo.classList.add('indicator');
   const html = `
   <div class="navBar">
     <img src="images/save.png" alt="save" class="save" 
