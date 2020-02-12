@@ -14,14 +14,6 @@ const toggleTaskStatus = function(taskId) {
   sendXMLRequest('POST', '/toggleTaskStatus', () => {}, taskId);
 };
 
-const editTask = function(taskId) {
-  if (event.key === 'Enter') {
-    const editedTask = event.target.innerHTML;
-    const content = JSON.stringify({ editedTask, taskId });
-    sendXMLRequest('POST', '/editTask', () => {}, content);
-  }
-};
-
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
@@ -144,10 +136,7 @@ const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
-  <div>
-    <input type="text" class="task" onkeypress="editTask('__taskId__')" 
-      value="__taskName__" id="__taskId__">
-  </div>
+  <input type="text" class="task" value="__taskName__" id="__taskId__">
   <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">
 </div>`;
