@@ -1,6 +1,6 @@
-const goToHome = function() {
-  location.reload(true);
-};
+'use strict';
+
+const goToHome = () => location.reload(true);
 
 const deleteTask = function(taskId) {
   sendXMLRequest('DELETE', '/deleteTask', displayTasks, taskId);
@@ -13,6 +13,8 @@ const deleteTodo = function(todoId) {
 const toggleTaskStatus = function(taskId) {
   sendXMLRequest('POST', '/toggleTaskStatus', () => {}, taskId);
 };
+
+const getValue = element => element.value;
 
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
@@ -45,6 +47,11 @@ const createTodoDisplay = html => {
 const hideIndicator = function() {
   const todos = document.querySelectorAll('.indicator');
   todos.forEach(todo => todo.classList.remove('indicator'));
+};
+
+const attachEventListener = function() {
+  const titleInput = document.querySelector('#todoTitle');
+  titleInput.onkeypress = insertInputBox;
 };
 
 const getTodoForm = () => {
@@ -80,13 +87,11 @@ const loadTasks = (todoId, title) => {
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
-const getValue = element => element.value;
-
 const getTaskInputBox = function() {
   const html = document.createElement('div');
   html.innerHTML = `
   <input type="checkbox" class="checkBox __status__">
-  <input type="text" class="taskInput" onkeypress="insertInputBox(event)">`;
+  <input type="text" class="taskInput" onkeypress="insertInputBox()">`;
   html.className = 'taskBox';
   html.id = '__taskId__';
   return html;
@@ -101,13 +106,6 @@ const insertInputBox = function() {
     appendHTML('#newTask', getTaskInputBox());
   }
 };
-
-const attachEventListener = function() {
-  const titleInput = document.querySelector('#todoTitle');
-  titleInput.onkeypress = insertInputBox;
-};
-
-const generateTodoDiv = todo => fillTemplate(todoTemplate, todo);
 
 const insertHTML = (selector, html) => {
   document.querySelector(selector).innerHTML = html;
@@ -161,6 +159,8 @@ const sendXMLRequest = function(method, url, callBack, data) {
   request.open(method, url);
   request.send(data);
 };
+
+const generateTodoDiv = todo => fillTemplate(todoTemplate, todo);
 
 const displayTodos = responseText => {
   const todos = JSON.parse(responseText);
