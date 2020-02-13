@@ -68,3 +68,29 @@ describe('Todo', () => {
     });
   });
 });
+
+describe('TodoList', () => {
+  describe('static load', () => {
+    it('Should load given list as class instance', () => {
+      const list = [
+        {
+          id: '1581336711285',
+          title: 'newTodo',
+          tasks: [
+            {
+              taskId: '1581336711285_0',
+              taskName: 'task1',
+              status: 'unchecked'
+            }
+          ]
+        }
+      ];
+      const actual = TodoList.load(JSON.stringify(list));
+      assert.isTrue(actual instanceof TodoList);
+    });
+    it('Should give instance of todoList for empty content', () => {
+      const actual = TodoList.load('');
+      assert.isTrue(actual instanceof TodoList);
+    });
+  });
+});
