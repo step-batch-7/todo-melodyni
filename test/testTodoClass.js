@@ -60,58 +60,70 @@ describe('Todo', () => {
 });
 
 describe('TodoList', () => {
+  const list = [
+    {
+      id: '1234',
+      title: 'newTodo',
+      tasks: [
+        {
+          taskId: '1234_1',
+          taskName: 'task1',
+          status: 'unchecked'
+        },
+        {
+          taskId: '1234_2',
+          taskName: 'task2',
+          status: 'unchecked'
+        }
+      ]
+    }
+  ];
+  const todoList = TodoList.load(JSON.stringify(list));
+
   describe('static load', () => {
     it('Should load given list as class instance', () => {
-      const list = [
-        {
-          id: '1581336711285',
-          title: 'newTodo',
-          tasks: [
-            {
-              taskId: '1581336711285_0',
-              taskName: 'task1',
-              status: 'unchecked'
-            }
-          ]
-        }
-      ];
-      const actual = TodoList.load(JSON.stringify(list));
-      assert.isTrue(actual instanceof TodoList);
+      assert.isTrue(todoList instanceof TodoList);
     });
     it('Should give instance of todoList for empty content', () => {
-      const actual = TodoList.load('');
-      assert.isTrue(actual instanceof TodoList);
+      const todoList = TodoList.load('');
+      assert.isTrue(todoList instanceof TodoList);
     });
   });
+
   describe('toJSON', () => {
     it('Should give JSON stringified todos', () => {
-      const todoList = new TodoList();
-      todoList.add({ id: '1234' });
-      assert.strictEqual(todoList.toJSON(), '[{"id":"1234"}]');
+      assert.strictEqual(todoList.toJSON(), JSON.stringify(list));
     });
   });
+
   describe('save', () => {
     it('Should save given title and tasks as new Todo in todoList', () => {
-      const todoList = new TodoList();
       const actual = todoList.save('TITLE', ['task1']);
       assert.strictEqual(actual, true);
     });
   });
+
   describe('toggleTaskStatus', () => {
-    const list = [
-      { id: '1234', tasks: [{ taskId: '1234_1', status: 'unchecked' }] }
-    ];
     it('Should give true if it toggles the task status successfully', () => {
-      const todoList = TodoList.load(JSON.stringify(list));
       assert.isTrue(todoList.toggleTaskStatus('1234_1'));
     });
     it('Should give false given task does not exist', () => {
-      const todoList = TodoList.load(JSON.stringify(list));
       assert.isFalse(todoList.toggleTaskStatus('1234_5'));
     });
     it('Should give false given todo does not exist', () => {
-      const todoList = TodoList.load(JSON.stringify(list));
       assert.isFalse(todoList.toggleTaskStatus('1233_5'));
+    });
+  });
+
+  describe('deleteTask', () => {
+    it('Should give true if the given task exists', () => {
+      assert.isTrue(todoList.deleteTask('1234_2'));
+    });
+    it('Should give false if given task does not exist', () => {
+      assert.isFalse(todoList.deleteTask('1234_3'));
+    });
+    it('Should give false if given todo not exist', () => {
+      assert.isFalse(todoList.deleteTask('1223_1'));
     });
   });
 });
