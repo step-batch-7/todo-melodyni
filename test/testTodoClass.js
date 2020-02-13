@@ -55,4 +55,16 @@ describe('Todo', () => {
       assert.isTrue(actual instanceof Todo);
     });
   });
+  describe('toggleTaskStatus', () => {
+    it('Should return true if it toggles the status', () => {
+      const task = new Task('1234_1', 'task1', 'unchecked');
+      const todo = new Todo('1234', 'TITLE', [task]);
+      assert.isTrue(todo.toggleTaskStatus('1234_1'));
+    });
+    it('Should return false if given task does not exists', () => {
+      const task = new Task('1234_1', 'task1', 'unchecked');
+      const todo = new Todo('1234', 'TITLE', [task]);
+      assert.isFalse(todo.toggleTaskStatus('1234_5'));
+    });
+  });
 });
