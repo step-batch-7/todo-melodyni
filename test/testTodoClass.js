@@ -38,16 +38,6 @@ describe('Todo', () => {
       assert.isUndefined(todo.findTask('1234_2'));
     });
   });
-  describe('findIndex', () => {
-    it('Should find the index of the given taskId if exists', () => {
-      const todo = new Todo('1234', 'TITLE', [{ taskId: '1234_1' }]);
-      assert.strictEqual(todo.findIndex('1234_1'), 0);
-    });
-    it('Should find the index of the given taskId if exists', () => {
-      const todo = new Todo('1234', 'TITLE', [{ taskId: '1234_1' }]);
-      assert.strictEqual(todo.findIndex('1234_5'), -1);
-    });
-  });
   describe('static load', () => {
     it('Should load and make given todo the instance of Todo class', () => {
       const todo = { id: '1234', title: 'TITLE', tasks: [] };
