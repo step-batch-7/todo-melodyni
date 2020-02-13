@@ -139,4 +139,18 @@ describe('TodoList', () => {
       assert.isFalse(todoList.deleteTodo('1223'));
     });
   });
+
+  describe('updateTodo', () => {
+    it('Should update the existing todo with given values and give true', () => {
+      const tasks = [{ taskId: '1234_1', task: 'hello' }];
+      assert.isTrue(todoList.updateTodo('Hello', tasks, 1234));
+    });
+    it('Should give false if given todo does not exist', () => {
+      assert.isFalse(todoList.updateTodo('Hello', [], 123456));
+    });
+    it('Should save and give true if given task does not exist', () => {
+      const tasks = [{ task: 'hello' }];
+      assert.isTrue(todoList.updateTodo('Hello', tasks, 1234));
+    });
+  });
 });
