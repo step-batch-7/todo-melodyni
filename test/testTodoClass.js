@@ -100,4 +100,11 @@ describe('TodoList', () => {
       assert.strictEqual(todoList.toJSON(), '[{"id":"1234"}]');
     });
   });
+  describe('save', () => {
+    it('Should save given title and tasks as new Todo in todoList', () => {
+      const todoList = new TodoList();
+      const actual = todoList.save('TITLE', ['task1']);
+      assert.strictEqual(actual, true);
+    });
+  });
 });
