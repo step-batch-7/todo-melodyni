@@ -76,6 +76,10 @@ describe('TodoList', () => {
           status: 'unchecked'
         }
       ]
+    },
+    {
+      id: '12345',
+      tasks: []
     }
   ];
   const todoList = TodoList.load(JSON.stringify(list));
@@ -124,6 +128,15 @@ describe('TodoList', () => {
     });
     it('Should give false if given todo not exist', () => {
       assert.isFalse(todoList.deleteTask('1223_1'));
+    });
+  });
+
+  describe('deleteTodo', () => {
+    it('Should give true if the given todo exists', () => {
+      assert.isTrue(todoList.deleteTodo('12345'));
+    });
+    it('Should give false if given todo not exist', () => {
+      assert.isFalse(todoList.deleteTodo('1223'));
     });
   });
 });
