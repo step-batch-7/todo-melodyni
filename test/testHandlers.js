@@ -102,7 +102,7 @@ describe('DELETE', () => {
 describe('METHOD not allowed', () => {
   it('should return 405 if the requested method is not allowed', done => {
     request(app.respond.bind(app))
-      .put('/guestBook.html')
+      .put('/')
       .expect(405, done);
   });
 });
