@@ -73,6 +73,8 @@ Todo for :- 12-02-2020
   ✔  * debug the error of order change ---fixed temporarily---
 
 Todo for :- 13-02-2020
-  * make gotoHome handler and remove location.reload()
-  * write unit test 
+  ✔  * write unit test ( 50% ) 
+  ✔  * make gotoHome handler and remove location.reload()
   * add middleware to validate parameters for the handler
+  * add functionality of adding tasks in existing todo
+  * replace checked unchecked with true false
