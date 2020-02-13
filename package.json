@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "export DATABASE=$(pwd)/test/resources/todos.json; nyc mocha",
-    "start": "export DATABASE=$(pwd)/dataBase/todos.json; nodemon server.js"
+    "start": "export DATABASE=$(pwd)/dataBase/todos.json; nodemon server.js",
+    "watch": "export DATABASE=$(pwd)/test/resources/todos.json; mocha --watch --growl"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,10 @@
     "url": "https://github.com/step-batch-7/todo-melodyni/issues"
   },
   "homepage": "https://github.com/step-batch-7/todo-melodyni#readme",
-  "dependencies": {},
+  "dependencies": {
+    "growl": "^1.10.5",
+    "terminal-notifier": "^0.1.2"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
