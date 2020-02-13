@@ -107,4 +107,21 @@ describe('TodoList', () => {
       assert.strictEqual(actual, true);
     });
   });
+  describe('toggleTaskStatus', () => {
+    const list = [
+      { id: '1234', tasks: [{ taskId: '1234_1', status: 'unchecked' }] }
+    ];
+    it('Should give true if it toggles the task status successfully', () => {
+      const todoList = TodoList.load(JSON.stringify(list));
+      assert.isTrue(todoList.toggleTaskStatus('1234_1'));
+    });
+    it('Should give false given task does not exist', () => {
+      const todoList = TodoList.load(JSON.stringify(list));
+      assert.isFalse(todoList.toggleTaskStatus('1234_5'));
+    });
+    it('Should give false given todo does not exist', () => {
+      const todoList = TodoList.load(JSON.stringify(list));
+      assert.isFalse(todoList.toggleTaskStatus('1233_5'));
+    });
+  });
 });
