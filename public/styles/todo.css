@@ -10,7 +10,7 @@ h1.title {
   color: #aeb6b8;
   font-weight: 200;
   font-family: sans-serif;
-  font-size: 2.5vh;
+  font-size: 2vh;
 }
 
 h6 {
@@ -34,6 +34,8 @@ hr {
   font-weight: 200;
   font-family: sans-serif;
   font-size: 1.5vh;
+  width: 15vw;
+  border: none;
 }
 
 .createButton {
@@ -45,7 +47,7 @@ hr {
 
 .deleteButton,
 .openButton {
-  height: 2.3vh;
+  height: 2vh;
   padding: 0% 5%;
 }
 
@@ -85,7 +87,7 @@ hr {
   background-color: #3b4446;
   border-radius: 7px;
   margin-bottom: 2%;
-  padding: 2%;
+  padding: 2.5%;
   word-wrap: break-word;
   word-break: break-all;
   hyphens: auto;
@@ -125,13 +127,17 @@ input {
 }
 
 .task {
-  width: 15vw;
+  width: 16vw;
   font-family: sans-serif;
   font-weight: 70;
   font-size: 1.5vh;
   color: #aeb6b8;
   outline: none;
   margin: 2px 0px 0px 2px;
+}
+
+.newTask {
+  width: 19vw;
 }
 
 .taskInput {

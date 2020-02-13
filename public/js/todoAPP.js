@@ -64,13 +64,18 @@ const getTodoForm = () => {
   <div class="navBar">
     <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
     <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
-    <img src="images/cross.png" alt="close" class="close" onclick="loadHomePage()">
+    <img src="images/cross.png" alt="close" class="close" 
+      onclick="loadHomePage()">
   </div>
   <hr />
   <br />
   <div id="newTask"></div>`;
   createTodoDisplay(html);
   attachEventListener();
+};
+
+const addInputBox = () => {
+  appendHTML('#items', getTaskInputBox('task newTask'));
 };
 
 const loadTasks = (todoId, title) => {
@@ -82,7 +87,10 @@ const loadTasks = (todoId, title) => {
     <img src="images/save.png" alt="save" class="save" 
       onclick="updateTodo(${todoId})"/>
     <input type="text" id="todoTitle" value="${title}">
-    <img src="images/cross.png" alt="cross" class="close" onclick="loadHomePage()"/>
+    <img src="images/add.png" alt="add" class="close" 
+      onclick="addInputBox()"/>
+    <img src="images/cross.png" alt="cross" class="close" 
+      onclick="loadHomePage()"/>
   </div>
   <hr />
   <br />
@@ -91,11 +99,11 @@ const loadTasks = (todoId, title) => {
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
-const getTaskInputBox = function() {
+const getTaskInputBox = function(inputClass) {
   const html = document.createElement('div');
   html.innerHTML = `
   <input type="checkbox" class="checkBox __status__">
-  <input type="text" class="taskInput" onkeypress="insertInputBox()">`;
+  <input type="text" class="${inputClass}" onkeypress="insertInputBox()">`;
   html.className = 'taskBox';
   html.id = '__taskId__';
   return html;
@@ -107,7 +115,7 @@ const appendHTML = (selector, html) => {
 
 const insertInputBox = function() {
   if (event.key === 'Enter') {
-    appendHTML('#newTask', getTaskInputBox());
+    appendHTML('#newTask', getTaskInputBox('taskInput'));
   }
 };
 
