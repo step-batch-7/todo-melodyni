@@ -1,6 +1,10 @@
 'use strict';
 
-const goToHome = () => location.reload(true);
+const loadHomePage = () => {
+  sendXMLRequest('GET', 'oldTodos', displayTodos);
+  const todoDisplay = '<div id="todoDisplay" class="todoDisplay"></div>';
+  document.querySelector('.container').innerHTML = todoDisplay;
+};
 
 const deleteTask = function(taskId) {
   sendXMLRequest('DELETE', '/deleteTask', displayTasks, taskId);
@@ -21,7 +25,7 @@ const saveTodo = function() {
   const taskElements = Array.from(document.querySelectorAll('.taskInput'));
   const tasks = taskElements.map(getValue);
   const todoContent = JSON.stringify({ title, tasks });
-  sendXMLRequest('POST', '/postNewTodos', goToHome, todoContent);
+  sendXMLRequest('POST', '/postNewTodos', loadHomePage, todoContent);
 };
 
 const getIdAndValue = element => {
@@ -35,7 +39,7 @@ const updateTodo = todoId => {
   const taskElements = Array.from(document.querySelectorAll('.task'));
   const tasks = taskElements.map(getIdAndValue);
   const todoContent = JSON.stringify({ title, tasks, todoId });
-  sendXMLRequest('POST', '/updateTodo', goToHome, todoContent);
+  sendXMLRequest('POST', '/updateTodo', loadHomePage, todoContent);
 };
 
 const createTodoDisplay = html => {
@@ -60,7 +64,7 @@ const getTodoForm = () => {
   <div class="navBar">
     <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
     <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
-    <img src="images/cross.png" alt="close" class="close" onclick="goToHome()">
+    <img src="images/cross.png" alt="close" class="close" onclick="loadHomePage()">
   </div>
   <hr />
   <br />
@@ -78,7 +82,7 @@ const loadTasks = (todoId, title) => {
     <img src="images/save.png" alt="save" class="save" 
       onclick="updateTodo(${todoId})"/>
     <input type="text" id="todoTitle" value="${title}">
-    <img src="images/cross.png" alt="cross" class="close" onclick="goToHome()"/>
+    <img src="images/cross.png" alt="cross" class="close" onclick="loadHomePage()"/>
   </div>
   <hr />
   <br />
@@ -167,6 +171,6 @@ const displayTodos = responseText => {
   return insertHTML('#todo', todos.map(generateTodoDiv).join('\n'));
 };
 
-const main = () => sendXMLRequest('GET', 'oldTodos', displayTodos);
+const main = () => loadHomePage();
 
 window.onload = main;
