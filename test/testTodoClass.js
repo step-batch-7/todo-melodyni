@@ -93,4 +93,11 @@ describe('TodoList', () => {
       assert.isTrue(actual instanceof TodoList);
     });
   });
+  describe('toJSON', () => {
+    it('Should give JSON stringified todos', () => {
+      const todoList = new TodoList();
+      todoList.add({ id: '1234' });
+      assert.strictEqual(todoList.toJSON(), '[{"id":"1234"}]');
+    });
+  });
 });
