@@ -48,4 +48,11 @@ describe('Todo', () => {
       assert.strictEqual(todo.findIndex('1234_5'), -1);
     });
   });
+  describe('static load', () => {
+    it('Should load and make given todo the instance of Todo class', () => {
+      const todo = { id: '1234', title: 'TITLE', tasks: [] };
+      const actual = Todo.load(todo);
+      assert.isTrue(actual instanceof Todo);
+    });
+  });
 });
