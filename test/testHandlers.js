@@ -2,7 +2,7 @@ const request = require('supertest');
 const fs = require('fs');
 const sinon = require('sinon');
 
-const { app } = require('../lib/handler');
+const { app } = require('../lib/routes');
 
 describe('GET', () => {
   it('should get the homepage(index.html) for path /', done => {
