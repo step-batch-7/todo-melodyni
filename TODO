@@ -78,7 +78,7 @@ Todo for :- 13-02-2020
   ✔  * add functionality of adding tasks in existing todo
 
 Todo for :- 14-02-2020
-  * convert http to express
+  ✔  * convert http to express
   * add middleware to validate parameters for the handler
   * replace checked unchecked with true false
   * modify adding todo 
