@@ -54,3 +54,12 @@ const updateTodo = todoId => {
   const todoContent = JSON.stringify({ title, tasks, todoId });
   sendXMLRequest('POST', '/updateTodo', loadHomePage, todoContent);
 };
+
+const searchByTitle = searchString => {
+  const todos = document.querySelectorAll('.todo');
+  todos.forEach(todo => todo.style['display'] = 'none');
+  const matchedTodos = Array.from(todos).filter(todo =>
+    todo.innerText.includes(searchString)
+  );
+  matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
+};

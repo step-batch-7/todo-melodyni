@@ -40,7 +40,7 @@ hr {
 
 .createButton {
   height: 3vh;
-  border: 1px solid #aeb6b8;
+  border: 1px solid #3b4446;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -144,4 +144,16 @@ input {
   width: 550px;
   margin-bottom: 1px;
   font-size: 1.5vh;
+}
+
+.search {
+  height: 3vh;
+  margin-bottom: -9px;
+}
+
+.searchByTitle {
+  font-size: 1.4vh;
+  padding: 0%;
+  width: 15vw;
+  color: #3b4446;
 }
