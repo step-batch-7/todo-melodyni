@@ -105,6 +105,16 @@
                 "no-magic-numbers": "off",
                 "max-statements": "off"
             }
+        },
+        {
+            "files": [
+                "public/js/*.js"
+            ],
+            "rules": {
+                "no-unused-vars":"off",
+                "no-return-assign":"off",
+                "no-undef":"off"
+            }
         }
     ]
 }
