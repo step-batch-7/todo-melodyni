@@ -1,7 +1,7 @@
 'use strict';
 
 const loadHomePage = () => {
-  sendXMLRequest('GET', 'oldTodos', displayTodos);
+  sendXMLRequest('GET', 'fetchTodos', displayTodos);
   document.querySelector('.container').innerHTML = '';
 };
 

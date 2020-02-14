@@ -28,9 +28,9 @@ describe('GET', () => {
       .expect(404, done);
   });
 
-  it('should give all todo data from database for request /oldTodos', done => {
+  it('should give all todo data from database for request /fetchTodos', done => {
     request(app)
-      .get('/oldTodos')
+      .get('/fetchTodos')
       .set('Accept', '*/*')
       .expect(200, done)
       .expect('Content-Type', 'application/json');
