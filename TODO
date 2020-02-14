@@ -79,7 +79,8 @@ Todo for :- 13-02-2020
 
 Todo for :- 14-02-2020
   ✔  * convert http to express
-  * add middleware to validate parameters for the handler
+  ✔  * add middleware to validate parameters for the handler
   * replace checked unchecked with true false
   * modify adding todo 
   * Implement new features
+  * validate data coming to class methods
