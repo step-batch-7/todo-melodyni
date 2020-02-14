@@ -2,14 +2,7 @@
 
 const loadHomePage = () => {
   sendXMLRequest('GET', 'oldTodos', displayTodos);
-  const todoDisplay = '<div id="todoDisplay" class="todoDisplay"></div>';
-  document.querySelector('.container').innerHTML = todoDisplay;
-};
-
-const createTodoDisplay = html => {
-  insertHTML('#todoDisplay', html);
-  const todoDisplay = document.querySelector('#todoDisplay');
-  todoDisplay.style['background-color'] = '#3b4446';
+  document.querySelector('.container').innerHTML = '';
 };
 
 const hideIndicator = function() {
@@ -25,6 +18,7 @@ const attachEventListener = function() {
 const getTodoForm = () => {
   hideIndicator();
   const html = `
+  <div id="todoDisplay" class="todoDisplay">
   <div class="navBar">
     <img src="images/save.png" alt="save" onclick="saveTodo()" class="save"/>
     <input type="text" id="todoTitle" placeholder="Enter Todo Name...." >
@@ -33,8 +27,9 @@ const getTodoForm = () => {
   </div>
   <hr />
   <br />
-  <div id="newTask"></div>`;
-  createTodoDisplay(html);
+  <div id="newTask"></div>
+  </div>`;
+  insertHTML('.container', html);
   attachEventListener();
 };
 
@@ -47,6 +42,7 @@ const loadTasks = (todoId, title) => {
   const todo = document.querySelector(`.todo[id="${todoId}"`);
   todo.classList.add('indicator');
   const html = `
+  <div id="todoDisplay" class="todoDisplay">
   <div class="navBar">
     <img src="images/save.png" alt="save" class="save" 
       onclick="updateTodo(${todoId})"/>
@@ -58,8 +54,9 @@ const loadTasks = (todoId, title) => {
   </div>
   <hr />
   <br />
-  <div id="items"></div>`;
-  createTodoDisplay(html);
+  <div id="items"></div>
+  </div>`;
+  insertHTML('.container', html);
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
