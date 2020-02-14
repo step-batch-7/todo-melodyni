@@ -7,15 +7,18 @@ const loadHomePage = () => {
 };
 
 const deleteTask = function(taskId) {
-  sendXMLRequest('DELETE', '/deleteTask', displayTasks, taskId);
+  const message = JSON.stringify({ taskId });
+  sendXMLRequest('DELETE', '/deleteTask', displayTasks, message);
 };
 
 const deleteTodo = function(todoId) {
-  sendXMLRequest('DELETE', '/deleteTodo', displayTodos, todoId);
+  const message = JSON.stringify({ todoId });
+  sendXMLRequest('DELETE', '/deleteTodo', displayTodos, message);
 };
 
 const toggleTaskStatus = function(taskId) {
-  sendXMLRequest('POST', '/toggleTaskStatus', () => {}, taskId);
+  const message = JSON.stringify({ taskId });
+  sendXMLRequest('POST', '/toggleTaskStatus', () => {}, message);
 };
 
 const getValue = element => element.value;
@@ -160,15 +163,19 @@ const taskTemplate = `
     onclick="deleteTask('__taskId__')">
 </div>`;
 
-const sendXMLRequest = function(method, url, callBack, data) {
+const sendXMLRequest = function(reqMethod, url, callBack, data) {
   const STATUS_CODES = { OK: 200 };
   const request = new XMLHttpRequest();
+  const methods = ['POST', 'DELETE'];
   request.onload = function() {
     if (this.status === STATUS_CODES.OK) {
       callBack(this.responseText);
     }
   };
-  request.open(method, url);
+  request.open(reqMethod, url);
+  if (methods.some(method => method === reqMethod)) {
+    request.setRequestHeader('Content-Type', 'application/json');
+  }
   request.send(data);
 };
 
