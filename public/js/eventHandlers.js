@@ -57,9 +57,13 @@ const updateTodo = todoId => {
 
 const searchByTitle = searchString => {
   const todos = document.querySelectorAll('.todo');
-  todos.forEach(todo => todo.style['display'] = 'none');
+  todos.forEach(todo => (todo.style['display'] = 'none'));
   const matchedTodos = Array.from(todos).filter(todo =>
     todo.innerText.includes(searchString)
   );
   matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
+};
+
+const searchByTask = searchText => {
+  
 };

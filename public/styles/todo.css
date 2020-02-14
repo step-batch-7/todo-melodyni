@@ -146,12 +146,12 @@ input {
   font-size: 1.5vh;
 }
 
-.search {
+.searchImage {
   height: 3vh;
   margin-bottom: -9px;
 }
 
-.searchByTitle {
+.search {
   font-size: 1.4vh;
   padding: 0%;
   width: 15vw;

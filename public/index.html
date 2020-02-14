@@ -11,10 +11,15 @@
   <body>
     <div class="navBar">
       <h1>TO DO</h1>
-      <div class="searchBar">
-        <img src="./images/search.png" alt="search" class="search">
+      <div class="searchByTitleBar">
+        <img src="./images/search.png" alt="search" class="searchImage">
         <input type="search" name="searchByTitle" id="searchByTitle" placeholder="enter your title here"
-          class="searchByTitle " oninput="searchByTitle(value)">
+          class="search " oninput="searchByTitle(value)">
+      </div>
+      <div class="searchByTaskBar">
+        <img src="./images/search.png" alt="search" class="searchImage">
+        <input type="search" name="searchByTask" id="searchByTask" placeholder="enter your task here"
+          class="search " oninput="searchByTask(value)">
       </div>
       <div class="icon">
         <img src="./images/create.png" alt="create" onclick="getTodoForm()" class="createButton" />
