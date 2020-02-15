@@ -3,43 +3,39 @@ const assert = require('chai').assert;
 const { TodoList } = require('../lib/todoClass');
 
 describe('TodoList', () => {
-  const list = [
-    {
-      id: '1234',
-      title: 'newTodo',
-      tasks: [
-        {
-          taskId: '1234_1',
-          taskName: 'task1',
-          status: 'unchecked'
-        },
-        {
-          taskId: '1234_2',
-          taskName: 'task2',
-          status: 'unchecked'
-        }
-      ]
-    },
-    {
-      id: '12345',
-      tasks: []
-    }
-  ];
-  const todoList = TodoList.load(JSON.stringify(list));
+  const list = {
+    todos: [
+      {
+        id: '1234',
+        title: 'newTodo',
+        tasks: [
+          {
+            taskId: '1234_1',
+            taskName: 'task1',
+            status: 'unchecked'
+          },
+          {
+            taskId: '1234_2',
+            taskName: 'task2',
+            status: 'unchecked'
+          }
+        ]
+      },
+      {
+        id: '12345',
+        tasks: []
+      }
+    ]
+  };
+  const todoList = TodoList.load(list);
 
   describe('static load', () => {
     it('Should load given list as class instance', () => {
       assert.isTrue(todoList instanceof TodoList);
     });
     it('Should give instance of todoList for empty content', () => {
-      const todoList = TodoList.load('');
+      const todoList = TodoList.load({ todos: [] });
       assert.isTrue(todoList instanceof TodoList);
-    });
-  });
-
-  describe('toJSON', () => {
-    it('Should give JSON stringified todos', () => {
-      assert.strictEqual(todoList.toJSON(), JSON.stringify(list));
     });
   });
 
