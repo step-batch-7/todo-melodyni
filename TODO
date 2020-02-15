@@ -84,7 +84,22 @@ Todo for :- 14-02-2020 and 15-02-2020
   * Implement new features 
   ✔ -> search by title
     -> search by task
-    -> login signUp
+  ✔ -> login
+    -> signUp
   * replace checked unchecked with true false
   * validate data coming to class methods
   * add handler tests 
+
+  User Class DataStructure
+  user {
+    name: ABCD
+    password:password
+    data: TodoList {}
+  }
+
+  Users {
+    users:[User{}]
+  }
+
+
+
