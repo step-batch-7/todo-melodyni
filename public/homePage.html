@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>TODO</title>
+    <link rel="stylesheet" href="./styles/todo.css" />
+    <script src="./js/homePage.js"></script>
+    <script src="./js/eventHandlers.js"></script>
+  </head>
+
+  <body>
+    <div class="navBar">
+      <h1>TO DO</h1>
+      <div class="searchByTitleBar">
+        <img src="./images/search.png" alt="search" class="searchImage">
+        <input type="search" name="searchByTitle" id="searchByTitle" placeholder="enter your title here"
+          class="search " oninput="searchByTitle(value)">
+      </div>
+      <div class="searchByTaskBar">
+        <img src="./images/search.png" alt="search" class="searchImage">
+        <input type="search" name="searchByTask" id="searchByTask" placeholder="enter your task here"
+          class="search " oninput="searchByTask(value)">
+      </div>
+      <div class="icon">
+        <img src="./images/create.png" alt="create" onclick="getTodoForm()" class="createButton" />
+      </div>
+    </div>
+    <hr />
+    <div class="todo-container">
+      <div class="list" id="todo"></div>
+      <div class="container">
+      </div>
+    </div>
+  </body>
+
+</html>
