@@ -31,7 +31,7 @@ const addInputBox = () => {
 
 const getTodoHtml = (todoId, title) => {
   return `
-  <div id="todoDisplay" class="todoDisplay">
+  <div class="todoDisplay" id="${todoId}">
   <div class="navBar">
     <img src="images/save.png" alt="save" class="save" 
       onclick="updateTodo(${todoId})"/>
@@ -52,7 +52,7 @@ const loadTasks = (todoId, title) => {
   const todo = document.querySelector(`.todo[id="${todoId}"`);
   todo.classList.add('indicator');
   insertHTML('.container', getTodoHtml(todoId, title));
-  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
+  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, (text) => displayTasks(text), '');
 };
 
 const getTaskInputBox = function(inputClass) {
@@ -85,9 +85,9 @@ const fillTemplate = function(template, propertyBag) {
 
 const generateTaskDiv = task => fillTemplate(taskTemplate, task);
 
-const displayTasks = function(responseText) {
+const displayTasks = function(responseText, query = '#items') {
   const tasks = JSON.parse(responseText);
-  insertHTML('#items', tasks.map(generateTaskDiv).join('\n'));
+  insertHTML(query, tasks.map(generateTaskDiv).join('\n'));
 };
 
 const todoTemplate = `

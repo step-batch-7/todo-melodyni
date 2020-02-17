@@ -18,7 +18,7 @@ const sendXMLRequest = function(reqMethod, url, callBack, data) {
 
 const deleteTask = function(taskId) {
   const message = JSON.stringify({ taskId });
-  sendXMLRequest('DELETE', '/deleteTask', displayTasks, message);
+  sendXMLRequest('DELETE', '/deleteTask', text => displayTasks(text), message);
 };
 
 const deleteTodo = function(todoId) {
@@ -36,7 +36,7 @@ const getValue = element => element.value;
 
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
-  const todoContent = JSON.stringify({ title});
+  const todoContent = JSON.stringify({ title });
   sendXMLRequest('POST', '/postNewTodos', loadHomePage, todoContent);
 };
 
@@ -63,4 +63,28 @@ const searchByTitle = searchString => {
   matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
 };
 
-const searchByTask = searchText => {};
+const showTodo = todo => {
+  const todoHtml = getTodoHtml(todo.id, todo.title);
+  const container = document.querySelector('.container');
+  container.innerHTML = container.innerHTML + todoHtml;
+  const query = `.todoDisplay[id="${todo.id}"] #items`;
+  displayTasks(JSON.stringify(todo.tasks), query);
+};
+
+let todoLists = [];
+
+const getTodos = () => {
+  const attachTodoList = resText => (todoLists = JSON.parse(resText).todos);
+  sendXMLRequest('GET', '/todos', attachTodoList, '');
+};
+
+const searchByTask = searchText => {
+  const container = document.querySelector('.container');
+  container.innerHTML = '';
+  if (searchText) {
+    const matchedTodos = todoLists.filter(todo =>
+      todo.tasks.some(task => task.taskName.includes(searchText))
+    );
+    matchedTodos.forEach(showTodo);
+  }
+};
