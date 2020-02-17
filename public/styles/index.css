@@ -59,6 +59,7 @@ input[type='text'] {
 .form-field input::placeholder {
   color: #898989;
   font-style: italic;
+  font-family: FontAwesome;
 }
 .form-field input:focus {
   border: 1px solid #e8e8e8;
