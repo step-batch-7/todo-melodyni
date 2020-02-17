@@ -1,5 +1,5 @@
 body {
-  background: #aeb6b8; 
+  background: #aeb6b8;
   font-family: 'Raleway', sans-serif;
   color: #151515;
 }
@@ -63,30 +63,31 @@ input[type='text'] {
 .form-field input:focus {
   border: 1px solid #e8e8e8;
 }
-.btn {
+.button {
   padding: 15px;
   font-size: 1em;
   width: 100%;
   border-radius: 25px;
-  border: none;
+  border: 1px solid #151515;
   margin: 20px 0px;
-}
-.btn-signin {
   cursor: pointer;
-  background: #aeb6b8;
+  background: #aeb6b874;
   color: #fff;
 }
 .createAccount {
-  display: flex; 
-  justify-content: space-between
+  display: flex;
+  justify-content: space-between;
 }
 .createAccount p {
   color: #9c9c9c;
 }
 #createAccount {
+  border-bottom: 1px solid #aeb6b8;
+}
+#createAccount,
+#signIn {
   color: #e3e3e3;
   cursor: pointer;
-  border-bottom: 1px solid #aeb6b8;
 }
 label {
   color: #b2b2b2;
