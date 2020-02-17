@@ -36,9 +36,7 @@ const getValue = element => element.value;
 
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
-  const taskElements = Array.from(document.querySelectorAll('.taskInput'));
-  const tasks = taskElements.map(getValue);
-  const todoContent = JSON.stringify({ title, tasks });
+  const todoContent = JSON.stringify({ title});
   sendXMLRequest('POST', '/postNewTodos', loadHomePage, todoContent);
 };
 

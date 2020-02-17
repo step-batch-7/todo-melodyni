@@ -127,17 +127,13 @@ input {
 }
 
 .task {
-  width: 16vw;
+  width: 19vw;
   font-family: sans-serif;
   font-weight: 70;
   font-size: 1.5vh;
   color: #aeb6b8;
   outline: none;
   margin: 2px 0px 0px 2px;
-}
-
-.newTask {
-  width: 19vw;
 }
 
 .taskInput {

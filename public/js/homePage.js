@@ -10,11 +10,6 @@ const hideIndicator = function() {
   todos.forEach(todo => todo.classList.remove('indicator'));
 };
 
-const attachEventListener = function() {
-  const titleInput = document.querySelector('#todoTitle');
-  titleInput.onkeypress = insertInputBox;
-};
-
 const getTodoForm = () => {
   hideIndicator();
   const html = `
@@ -26,22 +21,16 @@ const getTodoForm = () => {
       onclick="loadHomePage()">
   </div>
   <hr />
-  <br />
-  <div id="newTask"></div>
   </div>`;
   insertHTML('.container', html);
-  attachEventListener();
 };
 
 const addInputBox = () => {
-  appendHTML('#items', getTaskInputBox('task newTask'));
+  appendHTML('#items', getTaskInputBox('task'));
 };
 
-const loadTasks = (todoId, title) => {
-  hideIndicator();
-  const todo = document.querySelector(`.todo[id="${todoId}"`);
-  todo.classList.add('indicator');
-  const html = `
+const getTodoHtml = (todoId, title) => {
+  return `
   <div id="todoDisplay" class="todoDisplay">
   <div class="navBar">
     <img src="images/save.png" alt="save" class="save" 
@@ -56,7 +45,13 @@ const loadTasks = (todoId, title) => {
   <br />
   <div id="items"></div>
   </div>`;
-  insertHTML('.container', html);
+};
+
+const loadTasks = (todoId, title) => {
+  hideIndicator();
+  const todo = document.querySelector(`.todo[id="${todoId}"`);
+  todo.classList.add('indicator');
+  insertHTML('.container', getTodoHtml(todoId, title));
   sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, displayTasks, '');
 };
 
@@ -64,7 +59,7 @@ const getTaskInputBox = function(inputClass) {
   const html = document.createElement('div');
   html.innerHTML = `
   <input type="checkbox" class="checkBox __status__">
-  <input type="text" class="${inputClass}" onkeypress="insertInputBox()">`;
+  <input type="text" class="${inputClass}">`;
   html.className = 'taskBox';
   html.id = '__taskId__';
   return html;
@@ -72,12 +67,6 @@ const getTaskInputBox = function(inputClass) {
 
 const appendHTML = (selector, html) => {
   document.querySelector(selector).append(html);
-};
-
-const insertInputBox = function() {
-  if (event.key === 'Enter') {
-    appendHTML('#newTask', getTaskInputBox('taskInput'));
-  }
 };
 
 const insertHTML = (selector, html) => {
