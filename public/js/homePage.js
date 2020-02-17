@@ -102,13 +102,11 @@ const displayTasks = function(responseText) {
 };
 
 const todoTemplate = `
-  <div class="todo" id="__id__" > 
+  <div class="todo" id="__id__" onclick="loadTasks('__id__', '__title__')" > 
     <h1 class="title" >__title__</h1>
     <div style="display:flex;justify-content:space-between;">
     <img src="/images/bin.png" alt="delete" class="deleteButton"
       onclick="deleteTodo('__id__')">
-    <img src="/images/open.png" alt="open" class="openButton"
-      onclick="loadTasks('__id__', '__title__')" >
     </div>
   </div>`;
 

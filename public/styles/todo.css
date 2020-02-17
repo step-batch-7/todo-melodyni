@@ -46,8 +46,7 @@ hr {
   margin-bottom: 1.5px;
 }
 
-.deleteButton,
-.openButton {
+.deleteButton {
   height: 2vh;
   padding: 0% 5%;
 }
@@ -59,7 +58,6 @@ hr {
 
 .createButton,
 .logoutButton .deleteButton,
-.openButton,
 .save,
 .close {
   cursor: pointer;
@@ -84,7 +82,7 @@ hr {
 .todo {
   display: flex;
   justify-content: space-between;
-  width: 25vw;
+  width: 15vw;
   background-color: #3b4446;
   border-radius: 7px;
   margin-bottom: 2%;
@@ -99,14 +97,14 @@ hr {
 }
 
 .container {
-  width: 71.5%;
+  width: 80vw;
   display: flex;
   justify-content: center;
 }
 
 .todoDisplay {
   border-radius: 7px;
-  width: 30%;
+  width: 20vw;
   padding: 2%;
   background-color: #3b4446;
 }
