@@ -6,21 +6,41 @@
     <link rel="stylesheet" href="./styles/todo.css" />
     <script src="./js/homePage.js"></script>
     <script src="./js/eventHandlers.js"></script>
+    <script>
+      const toggleSearch = () => {
+        const type = document.querySelector('#selectSearch').value;
+        const searchByTitleBar = document.querySelector('.searchByTitleBar');
+        const searchByTaskBar = document.querySelector('.searchByTaskBar')
+        if (type === 'Task') {
+          searchByTitleBar.classList.add('hidden');
+          searchByTaskBar.classList.remove('hidden');
+        } else {
+          searchByTitleBar.classList.remove('hidden');
+          searchByTaskBar.classList.add('hidden');
+        }
+      }
+    </script>
   </head>
 
   <body>
     <div class="navBar">
+      <div style="display: flex;">
+        <div class="searchByTitleBar">
+          <img src="./images/search.png" alt="search" class="searchImage">
+          <input type="search" name="searchByTitle" id="searchByTitle" placeholder="enter your title here"
+            class="search " oninput="searchByTitle(value)">
+        </div>
+        <div class="searchByTaskBar hidden">
+          <img src="./images/search.png" alt="search" class="searchImage">
+          <input type="search" name="searchByTask" id="searchByTask" placeholder="enter your task here" class="search "
+            oninput="searchByTask(value)" onfocus="getTodos()">
+        </div>
+        <select name="selectSearch" id="selectSearch" onchange="toggleSearch()" class="selection">
+            <option value="Title">Title</option>
+            <option value="Task">Task</option>
+          </select>
+      </div>
       <h1>TO DO</h1>
-      <div class="searchByTitleBar">
-        <img src="./images/search.png" alt="search" class="searchImage">
-        <input type="search" name="searchByTitle" id="searchByTitle" placeholder="enter your title here" class="search "
-          oninput="searchByTitle(value)">
-      </div>
-      <div class="searchByTaskBar">
-        <img src="./images/search.png" alt="search" class="searchImage">
-        <input type="search" name="searchByTask" id="searchByTask" placeholder="enter your task here" class="search "
-          oninput="searchByTask(value)" onfocus="getTodos()">
-      </div>
       <div class="icon">
         <img src="./images/create.png" alt="create" onclick="getTodoForm()" class="createButton" />
         <a href="/logout"><img src="./images/logout.png" alt="logout" class="logoutButton"></a>
