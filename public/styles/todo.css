@@ -112,7 +112,8 @@ hr {
   margin: 2%;
 }
 
-input {
+input,
+h6 {
   background: none;
   border: none;
   border-bottom: 1px solid #aeb6b8;

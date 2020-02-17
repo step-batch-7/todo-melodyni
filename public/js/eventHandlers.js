@@ -42,7 +42,7 @@ const saveTodo = function() {
 
 const getIdAndValue = element => {
   const taskId = element.id;
-  const task = element.value;
+  const task = element.innerText || element.value;
   return { taskId, task };
 };
 
@@ -56,11 +56,11 @@ const updateTodo = todoId => {
 
 const searchByTitle = searchString => {
   const todos = document.querySelectorAll('.todo');
-  todos.forEach(todo => (todo.style['display'] = 'none'));
+  todos.forEach(todo => todo.style['display'] = 'none');
   const matchedTodos = Array.from(todos).filter(todo =>
     todo.innerText.includes(searchString)
   );
-  matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
+  matchedTodos.forEach(todo => todo.style['display'] = 'flex');
 };
 
 const showTodo = todo => {
@@ -74,7 +74,7 @@ const showTodo = todo => {
 let todoLists = [];
 
 const getTodos = () => {
-  const attachTodoList = resText => (todoLists = JSON.parse(resText).todos);
+  const attachTodoList = resText => todoLists = JSON.parse(resText).todos;
   sendXMLRequest('GET', '/todos', attachTodoList, '');
 };
 

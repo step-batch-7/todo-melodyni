@@ -112,7 +112,7 @@ const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
-  <input type="text" class="task" value="__taskName__" id="__taskId__" contenteditable>
+  <h6 type="text" class="task" id="__taskId__" contenteditable>__taskName__</h6>
   <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">
 </div>`;
