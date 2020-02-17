@@ -61,9 +61,7 @@ const searchByTitle = searchString => {
   const matchedTodos = Array.from(todos).filter(todo =>
     todo.innerText.includes(searchString)
   );
-  matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
+  matchedTodos.forEach(todo => todo.style['display'] = 'flex');
 };
 
-const searchByTask = searchText => {
-  
-};
+const searchByTask = searchText => {};
