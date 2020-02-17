@@ -7,19 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Todo</title>
     <link rel="stylesheet" href="./styles/index.css">
-    <script>
-      const displayPassword = () => {
-        const passwordBox = document.querySelector('#password');
-        const passwordTypes = { 'text': 'password', 'password': 'text' };
-        passwordBox.type = passwordTypes[passwordBox.type];
-      }
-      const showSignUp = () => {
-        const signIn = document.querySelector('.signInSection');
-        const signUp = document.querySelector('.signUpSection');
-        signIn.classList.add('hidden');
-        signUp.classList.remove('hidden');
-      }
-    </script>
+     <script src="./js/index.js"></script>
   </head>
 
   <body>
@@ -70,7 +58,7 @@
             </div>
             <div class="form-field">
               <label for="password">Confirm Password</label>
-              <input id="password" name="confirmPassword" type="password" placeholder="Confirm Password" autocomplete="off" />
+              <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password" autocomplete="off" />
             </div>
             <div class="form-field">
               <input type="submit" class="btn btn-signin" value="sign Up" />
