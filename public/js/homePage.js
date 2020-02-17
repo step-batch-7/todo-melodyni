@@ -52,7 +52,12 @@ const loadTasks = (todoId, title) => {
   const todo = document.querySelector(`.todo[id="${todoId}"`);
   todo.classList.add('indicator');
   insertHTML('.container', getTodoHtml(todoId, title));
-  sendXMLRequest('GET', `/fetchTasks?id=${todoId}`, (text) => displayTasks(text), '');
+  sendXMLRequest(
+    'GET',
+    `/fetchTasks?id=${todoId}`,
+    text => displayTasks(text),
+    ''
+  );
 };
 
 const getTaskInputBox = function(inputClass) {
@@ -83,7 +88,11 @@ const fillTemplate = function(template, propertyBag) {
   return html;
 };
 
-const generateTaskDiv = task => fillTemplate(taskTemplate, task);
+const generateTaskDiv = task => {
+  task.taskName = task.taskName.replace(/</g, '&lt;');
+  task.taskName = task.taskName.replace(/>/g, '&gt;');
+  return fillTemplate(taskTemplate, task);
+};
 
 const displayTasks = function(responseText, query = '#items') {
   const tasks = JSON.parse(responseText);
@@ -103,12 +112,16 @@ const taskTemplate = `
 <div class="taskBox" id="__taskId__">
   <input type="checkbox" id="taskId" class="checkBox" 
     onclick="toggleTaskStatus('__taskId__')" __status__>
-  <input type="text" class="task" value="__taskName__" id="__taskId__">
+  <input type="text" class="task" value="__taskName__" id="__taskId__" contenteditable>
   <img src="/images/bin.png" class="deleteButton" alt="delete" 
     onclick="deleteTask('__taskId__')">
 </div>`;
 
-const generateTodoDiv = todo => fillTemplate(todoTemplate, todo);
+const generateTodoDiv = todo => {
+  todo.title = todo.title.replace(/</g, '&lt;');
+  todo.title = todo.title.replace(/>/g, '&gt;');
+  return fillTemplate(todoTemplate, todo);
+};
 
 const displayTodos = responseText => {
   const todos = JSON.parse(responseText);
