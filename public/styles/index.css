@@ -1,63 +1,96 @@
-.login {
-  display: flex;
-  justify-content: center;
-  padding: 5%;
+body {
+  background: #aeb6b8; 
+  font-family: 'Raleway', sans-serif;
+  color: #151515;
 }
-.loginCard {
-  height: 30vh;
-  width: 15vw;
-  background-color: #3b4446;
-  border-radius: 7px;
-  text-align: center;
-  padding: 1%;
+
+label {
+  color: black;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+input:focus {
+  outline: none;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form {
+  display: flex;
+  width: auto;
+  background: #3b4446;
+  margin: 15px;
+  padding: 25px;
+  border-radius: 25px;
+}
+.signInSection,
+.signUpSection {
+  padding: 30px;
 }
 .header {
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  margin: 0%;
   color: #aeb6b8;
-  font-family: sans-serif;
-  font-size: 4vh;
-  font-weight: 400;
 }
-.loginForm {
-  display: flex;
-  flex-flow: column wrap;
-  padding: 1%;
+.form-field {
+  display: block;
+  width: 300px;
+  margin: 10px auto;
 }
-
-#userName,
-#password,
-#submit {
-  margin: 1%;
-  padding: 3%;
+.form-field label {
+  display: block;
+  margin-bottom: 10px;
 }
-
-#userName,
-#password {
+.form-field input[type='password'],
+input[type='email'],
+input[type='text'] {
+  width: 90%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #2c2c2c;
   background: transparent;
-  border: none;
-  border-bottom: 1px solid #aeb6b8;
-  background-repeat: no-repeat;
-  text-indent: 10%;
-  outline: none;
   color: #aeb6b8;
-
 }
-
-#userName::placeholder,
-#password::placeholder {
-  font-family: FontAwesome;
+.form-field input::placeholder {
+  color: #898989;
   font-style: italic;
-  color: #aeb6b8;
 }
-
-#userName {
-  background-image: url('../images/user.png');
+.form-field input:focus {
+  border: 1px solid #e8e8e8;
 }
-
-#password {
-  background-image: url('../images/lock.png');
+.btn {
+  padding: 15px;
+  font-size: 1em;
+  width: 100%;
+  border-radius: 25px;
+  border: none;
+  margin: 20px 0px;
 }
-
-#submit {
-  margin: 0 auto;
-  margin-top: 10%;
+.btn-signin {
+  cursor: pointer;
+  background: #aeb6b8;
+  color: #fff;
+}
+.createAccount {
+  display: flex; 
+  justify-content: space-between
+}
+.createAccount p {
+  color: #9c9c9c;
+}
+#createAccount {
+  color: #e3e3e3;
+  cursor: pointer;
+  border-bottom: 1px solid #aeb6b8;
+}
+label {
+  color: #b2b2b2;
+}
+.hidden {
+  display: none;
 }
