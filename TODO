@@ -80,14 +80,14 @@ Todo for :- 13-02-2020
 Todo for :- 14-02-2020 and 15-02-2020
   ✔  * convert http to express
   ✔  * add middleware to validate parameters for the handler
-  * modify adding todo 
-  * Implement new features 
-  ✔ -> search by title
-    -> search by task
-  ✔ -> login
-    -> signUp
-  * replace checked unchecked with true false
+  ✔  * modify adding todo 
+  ✔  * Implement new features 
+     ✔ -> search by title
+     ✔ -> search by task
+     ✔ -> login
+     ✔ -> signUp
   * validate data coming to class methods
+  * replace checked unchecked with true false
   * add handler tests 
 
   User Class DataStructure
