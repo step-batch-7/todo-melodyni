@@ -10,7 +10,7 @@ h1.title {
   color: #aeb6b8;
   font-weight: 200;
   font-family: sans-serif;
-  font-size: 2vh;
+  font-size: 2.5vh;
 }
 
 h6 {
@@ -33,7 +33,7 @@ hr {
   color: #aeb6b8;
   font-weight: 200;
   font-family: sans-serif;
-  font-size: 1.5vh;
+  font-size: 2.5vh;
   width: 15vw;
   border: none;
 }
@@ -47,13 +47,14 @@ hr {
 }
 
 .deleteButton {
-  height: 2vh;
+  height: 3vh;
   padding: 0% 5%;
+  margin-top: 2%;
 }
 
 .save,
 .close {
-  height: 3vh;
+  height: 3.5vh;
 }
 
 .createButton,
@@ -122,6 +123,10 @@ input {
   outline: none;
 }
 
+input[type="checkbox"] {
+  margin-top: 3%;
+}
+
 .taskBox {
   display: flex;
   justify-content: center;
@@ -132,7 +137,7 @@ input {
   width: 19vw;
   font-family: sans-serif;
   font-weight: 70;
-  font-size: 1.5vh;
+  font-size: 2.5vh;
   color: #aeb6b8;
   outline: none;
   margin: 2px 0px 0px 2px;
@@ -150,7 +155,7 @@ input {
 }
 
 .search {
-  font-size: 1.4vh;
+  font-size: 2vh;
   padding: 0%;
   width: 15vw;
   color: #3b4446;
