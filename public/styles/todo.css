@@ -39,10 +39,11 @@ hr {
 }
 
 .createButton {
-  height: 3vh;
-  border: 1px solid #3b4446;
-  border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 5px;
+}
+.logoutButton {
+  margin-left: 5px;
+  margin-bottom: 1.5px;
 }
 
 .deleteButton,
@@ -57,7 +58,7 @@ hr {
 }
 
 .createButton,
-.deleteButton,
+.logoutButton .deleteButton,
 .openButton,
 .save,
 .close {
@@ -107,7 +108,7 @@ hr {
   border-radius: 7px;
   width: 30%;
   padding: 2%;
-  background-color:#3b4446
+  background-color: #3b4446;
 }
 
 input {
