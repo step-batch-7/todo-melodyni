@@ -50,11 +50,12 @@ input:focus {
 input[type='email'],
 input[type='text'] {
   width: 90%;
-  padding: 15px;
+  padding: 4%;
   border-radius: 10px;
   border: 1px solid #2c2c2c;
   background: transparent;
   color: #aeb6b8;
+  font-size: 1.5vh;
 }
 .form-field input::placeholder {
   color: #898989;

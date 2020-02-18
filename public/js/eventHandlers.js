@@ -52,7 +52,7 @@ const updateTodo = todoId => {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.task'));
   const tasks = taskElements.map(getIdAndValue);
-  if (title && tasks.every(task => task.task)) {
+  if (title) {
     const todoContent = JSON.stringify({ title, tasks, todoId });
     sendXMLRequest('POST', '/updateTodo', loadHomePage, todoContent);
   }
