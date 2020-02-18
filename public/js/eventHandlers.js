@@ -36,8 +36,10 @@ const getValue = element => element.value;
 
 const saveTodo = function() {
   const title = document.querySelector('#todoTitle').value;
-  const todoContent = JSON.stringify({ title });
-  sendXMLRequest('POST', '/postNewTodos', loadHomePage, todoContent);
+  if (title) {
+    const todoContent = JSON.stringify({ title });
+    sendXMLRequest('POST', '/postNewTodos', loadHomePage, todoContent);
+  }
 };
 
 const getIdAndValue = element => {
@@ -50,17 +52,19 @@ const updateTodo = todoId => {
   const title = document.querySelector('#todoTitle').value;
   const taskElements = Array.from(document.querySelectorAll('.task'));
   const tasks = taskElements.map(getIdAndValue);
-  const todoContent = JSON.stringify({ title, tasks, todoId });
-  sendXMLRequest('POST', '/updateTodo', loadHomePage, todoContent);
+  if (title && tasks.every(task => task.task)) {
+    const todoContent = JSON.stringify({ title, tasks, todoId });
+    sendXMLRequest('POST', '/updateTodo', loadHomePage, todoContent);
+  }
 };
 
 const searchByTitle = searchString => {
   const todos = document.querySelectorAll('.todo');
-  todos.forEach(todo => todo.style['display'] = 'none');
+  todos.forEach(todo => (todo.style['display'] = 'none'));
   const matchedTodos = Array.from(todos).filter(todo =>
     todo.innerText.includes(searchString)
   );
-  matchedTodos.forEach(todo => todo.style['display'] = 'flex');
+  matchedTodos.forEach(todo => (todo.style['display'] = 'flex'));
 };
 
 const showTodo = todo => {
@@ -74,7 +78,7 @@ const showTodo = todo => {
 let todoLists = [];
 
 const getTodos = () => {
-  const attachTodoList = resText => todoLists = JSON.parse(resText).todos;
+  const attachTodoList = resText => (todoLists = JSON.parse(resText).todos);
   sendXMLRequest('GET', '/todos', attachTodoList, '');
 };
 
