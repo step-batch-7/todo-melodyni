@@ -22,9 +22,9 @@ input:focus {
   display: flex;
   width: auto;
   background: #3b4446;
-  margin: 15px;
-  padding: 25px;
-  border-radius: 25px;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 10px;
 }
 .signInSection,
 .signUpSection {
@@ -78,7 +78,6 @@ input[type='text'] {
 }
 .createAccount {
   display: flex;
-  justify-content: space-between;
 }
 .createAccount p {
   color: #9c9c9c;
@@ -90,6 +89,7 @@ input[type='text'] {
 #signIn {
   color: #e3e3e3;
   cursor: pointer;
+  margin-left: 10px;
 }
 label {
   color: #b2b2b2;

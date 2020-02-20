@@ -43,14 +43,18 @@ const saveTodo = function() {
 };
 
 const getIdAndValue = element => {
-  const taskId = element.id;
-  const task = element.innerText || element.value;
-  return { taskId, task };
+  const [checkBox, taskBox] = element.children;
+  const taskId = taskBox.id;
+  let task = taskBox.innerText;
+  if (taskBox.tagName === 'INPUT') {
+    task = taskBox.value;
+  }
+  return { taskId, task, status: checkBox.checked };
 };
 
 const updateTodo = todoId => {
   const title = document.querySelector('#todoTitle').value;
-  const taskElements = Array.from(document.querySelectorAll('.task'));
+  const taskElements = Array.from(document.querySelectorAll('.taskBox'));
   const tasks = taskElements.map(getIdAndValue);
   if (title) {
     const todoContent = JSON.stringify({ title, tasks, todoId });
